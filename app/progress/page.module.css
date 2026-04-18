@@ -1,0 +1,39 @@
+.container { padding:32px 40px; min-height:100vh; animation:fadeIn 0.3s ease; }
+.loading { display:flex;align-items:center;justify-content:center;height:60vh;font-size:16px;color:var(--text-muted); }
+.header { display:flex;align-items:center;justify-content:space-between;margin-bottom:28px; }
+.title { font-size:24px;font-weight:600;color:var(--text-primary);letter-spacing:-0.01em; }
+.subtitle { font-size:14px;color:var(--text-muted);margin-top:4px; }
+
+.topCards { display:flex; gap:16px; margin-bottom:16px; }
+.bottomCards { display:flex; gap:16px; }
+.card { flex:1; padding:24px; border-radius:var(--radius-lg); background-color:var(--bg-surface); border:1px solid var(--border-subtle); display:flex; flex-direction:column; gap:16px; }
+
+.cardLabel { font-size:13px; font-weight:500; color:var(--text-muted); }
+.cardTitle { font-size:14px; font-weight:600; color:var(--text-primary); }
+.cardHint { font-size:12px; color:var(--text-muted); }
+.bigValue { font-size:48px; font-weight:700; color:var(--text-primary); letter-spacing:-0.03em; }
+
+.ringWrap { position:relative; width:120px; height:120px; align-self:center; }
+.ring { width:120px; height:120px; }
+.ringValue { position:absolute; inset:0; display:flex; align-items:center; justify-content:center; font-size:28px; font-weight:700; color:var(--text-primary); }
+
+.streakDots { display:flex; gap:4px; }
+.streakDot { width:24px; height:24px; border-radius:4px; }
+
+.miniChart { display:flex; align-items:flex-end; gap:6px; height:48px; }
+.miniBar { width:20px; border-radius:3px; background:linear-gradient(180deg,#22D3EE,rgba(34,211,238,0.4)); }
+
+.categoryList { display:flex; flex-direction:column; gap:12px; }
+.categoryRow { display:flex; align-items:center; gap:12px; }
+.catDot { width:8px; height:8px; border-radius:2px; flex-shrink:0; }
+.catName { font-size:13px; color:var(--text-secondary); width:80px; flex-shrink:0; }
+.catBar { flex:1; height:6px; border-radius:3px; background-color:var(--bg-elevated); overflow:hidden; }
+.catFill { height:6px; border-radius:3px; transition:width 0.5s ease; }
+.catPct { font-size:12px; font-weight:500; color:var(--text-primary); width:36px; text-align:right; flex-shrink:0; }
+
+.activityChart { display:flex; align-items:flex-end; gap:10px; height:120px; padding-top:12px; }
+.activityCol { display:flex; flex-direction:column; align-items:center; gap:6px; flex:1; }
+.activityBar { width:100%; border-radius:6px; transition:height 0.5s ease; }
+.activityDay { font-size:10px; color:var(--text-muted); }
+
+@keyframes fadeIn { from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)} }

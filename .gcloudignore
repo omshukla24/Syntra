@@ -1,0 +1,38 @@
+# Dependencies
+node_modules/
+
+# Build cache
+.next/cache/
+
+# Source files (not needed in production — standalone output is used)
+app/
+components/
+lib/
+public/
+
+# Dev config
+.env.local
+.env*.local
+*.ts
+*.tsx
+*.mjs
+tsconfig.json
+eslint.config.mjs
+next.config.ts
+next-env.d.ts
+
+# IDE / OS
+.git
+.gitignore
+.vscode
+.DS_Store
+AGENTS.md
+CLAUDE.md
+README.md
+
+# Keep these
+!.next/
+!.next/standalone/
+!.next/static/
+!package.json
+!app.yaml
