@@ -61,7 +61,7 @@ export default function FocusPage() {
         animate={{ opacity: 1, scale: 1 }}
         transition={{ duration: 0.5, ease: 'easeOut' }}
       >
-        <motion.div className={styles.badge} animate={isRunning ? { boxShadow: '0 0 20px rgba(255,46,159,0.3)', borderColor: 'rgba(255,46,159,0.5)', color: 'var(--plasma-pink)' } : {}}>
+        <motion.div className={styles.badge} animate={isRunning ? { boxShadow: '0 0 20px rgba(194, 123, 58,0.3)', borderColor: 'rgba(194, 123, 58,0.5)', color: 'var(--plasma-pink)' } : {}}>
           <div className={styles.badgeDot} style={{ backgroundColor: isRunning ? 'var(--plasma-pink)' : 'var(--plasma-cyan)' }} />
           <span>{isRunning ? 'Temporal Lock Active' : 'System Ready'}</span>
         </motion.div>
@@ -71,7 +71,7 @@ export default function FocusPage() {
           <p className={styles.subtitle}>Isolate. Execute. Prevail.</p>
         </div>
 
-        <motion.div className={styles.timerCard} animate={isRunning ? { boxShadow: '0 0 80px rgba(124,92,255,0.08), inset 0 0 40px rgba(124,92,255,0.03)' } : {}}>
+        <motion.div className={styles.timerCard} animate={isRunning ? { boxShadow: '0 0 80px rgba(245, 230, 200,0.08), inset 0 0 40px rgba(245, 230, 200,0.03)' } : {}}>
           {isRunning && (
             <motion.div 
               className={styles.timerGlow}
@@ -139,7 +139,7 @@ export default function FocusPage() {
               className={styles.completeBtn} 
               onClick={handleComplete} 
               disabled={!selectedTask}
-              whileHover={selectedTask ? { scale: 1.05, boxShadow: '0 0 20px rgba(0,240,255,0.3)' } : {}}
+              whileHover={selectedTask ? { scale: 1.05, boxShadow: '0 0 20px rgba(232, 166, 52,0.3)' } : {}}
               whileTap={selectedTask ? { scale: 0.95 } : {}}
             >
               <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M3 7.5l3 3 5-5" stroke="#fff" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/></svg>
@@ -174,7 +174,7 @@ export default function FocusPage() {
           </div>
           <div className={styles.quickDivider} />
           <div className={styles.quickStat}>
-            <span className={styles.quickValue} style={{ color: 'var(--plasma-cyan)', textShadow: '0 0 20px rgba(0,240,255,0.4)' }}>{formatTime(seconds).slice(0, 5)}</span>
+            <span className={styles.quickValue} style={{ color: 'var(--plasma-cyan)', textShadow: '0 0 20px rgba(232, 166, 52,0.4)' }}>{formatTime(seconds).slice(0, 5)}</span>
             <span className={styles.quickLabel}>Session Yield</span>
           </div>
         </div>

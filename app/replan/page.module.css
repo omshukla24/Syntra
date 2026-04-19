@@ -21,12 +21,12 @@
   border-radius: 50%;
   background: rgba(11, 11, 18, 0.6);
   backdrop-filter: blur(20px);
-  border: 1px solid rgba(255, 46, 159, 0.3);
+  border: 1px solid rgba(194, 123, 58, 0.3);
   display: flex;
   align-items: center;
   justify-content: center;
   margin-bottom: 24px;
-  box-shadow: 0 0 30px rgba(255, 46, 159, 0.1);
+  box-shadow: 0 0 30px rgba(194, 123, 58, 0.1);
 }
 
 .heroTitle {
@@ -61,8 +61,8 @@
 }
 
 .inputCard:focus-within {
-  border-color: rgba(255, 46, 159, 0.4);
-  box-shadow: 0 0 40px rgba(255, 46, 159, 0.05), inset 0 0 20px rgba(255, 46, 159, 0.02);
+  border-color: rgba(194, 123, 58, 0.4);
+  box-shadow: 0 0 40px rgba(194, 123, 58, 0.05), inset 0 0 20px rgba(194, 123, 58, 0.02);
 }
 
 .textarea {
@@ -127,7 +127,7 @@
   text-transform: uppercase;
   letter-spacing: 0.05em;
   font-family: var(--font-mono);
-  box-shadow: 0 4px 20px rgba(255, 46, 159, 0.2);
+  box-shadow: 0 4px 20px rgba(194, 123, 58, 0.2);
   flex-shrink: 0;
 }
 
@@ -212,8 +212,8 @@
 .aiBadge {
   padding: 4px 10px;
   border-radius: 6px;
-  background: rgba(0, 240, 255, 0.1);
-  border: 1px solid rgba(0, 240, 255, 0.2);
+  background: rgba(232, 166, 52, 0.1);
+  border: 1px solid rgba(232, 166, 52, 0.2);
   color: var(--plasma-cyan);
   font-size: 9px;
   font-weight: 600;
@@ -234,15 +234,15 @@
   gap: 8px;
   padding: 12px 24px;
   border-radius: 12px;
-  background: linear-gradient(135deg, rgba(0, 240, 255, 0.2), rgba(124, 92, 255, 0.2));
-  border: 1px solid rgba(0, 240, 255, 0.3);
+  background: linear-gradient(135deg, rgba(232, 166, 52, 0.2), rgba(245, 230, 200, 0.2));
+  border: 1px solid rgba(232, 166, 52, 0.3);
   color: #fff;
   font-size: 13px;
   font-weight: 500;
   text-transform: uppercase;
   letter-spacing: 0.05em;
   font-family: var(--font-mono);
-  box-shadow: 0 4px 24px rgba(0, 240, 255, 0.1);
+  box-shadow: 0 4px 24px rgba(232, 166, 52, 0.1);
 }
 
 .acceptedLabel {
@@ -281,8 +281,8 @@
 .goalTag {
   padding: 8px 16px;
   border-radius: 8px;
-  background: rgba(124, 92, 255, 0.08);
-  border: 1px solid rgba(124, 92, 255, 0.2);
+  background: rgba(245, 230, 200, 0.08);
+  border: 1px solid rgba(245, 230, 200, 0.2);
   color: #fff;
   font-size: 13px;
 }

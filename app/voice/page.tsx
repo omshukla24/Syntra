@@ -117,7 +117,7 @@ export default function VoicePage() {
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.6, ease: "easeOut" }}
       >
-        <motion.div className={styles.badge} animate={isListening ? { boxShadow: '0 0 20px rgba(0,240,255,0.4)', borderColor: 'rgba(0,240,255,0.8)' } : {}}>
+        <motion.div className={styles.badge} animate={isListening ? { boxShadow: '0 0 20px rgba(232, 166, 52,0.4)', borderColor: 'rgba(232, 166, 52,0.8)' } : {}}>
           <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><rect x="5" y="1" width="4" height="7" rx="2" stroke="currentColor" strokeWidth="1.2"/><path d="M3 6a4 4 0 008 0M7 11v2" stroke="currentColor" strokeWidth="1.2" strokeLinecap="round"/></svg>
           {isListening ? 'Acoustic Link Active' : 'Establishing Acoustic Link'}
         </motion.div>
@@ -133,7 +133,7 @@ export default function VoicePage() {
           disabled={loading}
           whileHover={{ scale: 1.05 }}
           whileTap={{ scale: 0.95 }}
-          animate={isListening ? { boxShadow: '0 0 60px rgba(0,240,255,0.3)', borderColor: '#00F0FF' } : {}}
+          animate={isListening ? { boxShadow: '0 0 60px rgba(232, 166, 52,0.3)', borderColor: '#E8A634' } : {}}
         >
           {isListening && (
             <motion.div 

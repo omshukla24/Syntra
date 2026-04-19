@@ -19,7 +19,7 @@ const NAV_ITEMS = [
 ];
 
 function NavIcon({ icon, active }: { icon: string; active: boolean }) {
-  const color = active ? '#fff' : '#6E6E82';
+  const color = active ? '#E8A634' : '#6E6E82';
   switch (icon) {
     case 'dashboard':
       return <svg width="18" height="18" viewBox="0 0 18 18" fill="none"><rect x="1" y="1" width="6" height="6" rx="1.5" stroke={color} strokeWidth="1.3"/><rect x="11" y="1" width="6" height="3.5" rx="1.5" stroke={color} strokeWidth="1.3"/><rect x="1" y="11" width="6" height="6" rx="1.5" stroke={color} strokeWidth="1.3"/><rect x="11" y="7.5" width="6" height="9.5" rx="1.5" stroke={color} strokeWidth="1.3"/></svg>;
@@ -53,7 +53,7 @@ export default function Sidebar() {
       <div className={styles.logo}>
         <motion.div 
           className={styles.logoIcon}
-          animate={{ boxShadow: ['0 0 20px rgba(255,46,159,0.2)', '0 0 40px rgba(124,92,255,0.4)', '0 0 20px rgba(255,46,159,0.2)'] }}
+          animate={{ boxShadow: ['0 0 20px rgba(194, 123, 58,0.2)', '0 0 40px rgba(245, 230, 200,0.4)', '0 0 20px rgba(194, 123, 58,0.2)'] }}
           transition={{ repeat: Infinity, duration: 4, ease: 'easeInOut' }}
         >
           <svg width="20" height="20" viewBox="0 0 20 20" fill="none">

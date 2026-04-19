@@ -34,7 +34,7 @@ export default function ReplanPage() {
     // Trigger visual pulse effect on body
     const glowField = document.createElement('div');
     glowField.className = 'fixed inset-0 pointer-events-none z-50';
-    glowField.style.background = 'radial-gradient(circle at center, rgba(255,46,159,0.3) 0%, transparent 70%)';
+    glowField.style.background = 'radial-gradient(circle at center, rgba(194, 123, 58,0.3) 0%, transparent 70%)';
     glowField.style.animation = 'shockwave 1.5s ease-out forwards';
     document.body.appendChild(glowField);
     setTimeout(() => glowField.remove(), 1500);
@@ -98,7 +98,7 @@ export default function ReplanPage() {
             animate="animate"
             exit="exit"
           >
-            <motion.div className={styles.logoIcon} variants={itemVariants} animate={loading ? { rotate: 360, boxShadow: '0 0 40px #FF2E9F' } : {}} transition={loading ? { repeat: Infinity, duration: 2, ease: "linear" } : {}}>
+            <motion.div className={styles.logoIcon} variants={itemVariants} animate={loading ? { rotate: 360, boxShadow: '0 0 40px #C27B3A' } : {}} transition={loading ? { repeat: Infinity, duration: 2, ease: "linear" } : {}}>
               <svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M12 2L20 7.5V16.5L12 22L4 16.5V7.5L12 2Z" stroke="#fff" strokeWidth="1.5" fill="none"/><circle cx="12" cy="12" r="3" fill="#fff"/></svg>
             </motion.div>
             <motion.h1 className={styles.heroTitle} variants={itemVariants}>Restructure Reality</motion.h1>
@@ -130,7 +130,7 @@ export default function ReplanPage() {
                   className={styles.structureBtn} 
                   onClick={handleReplan} 
                   disabled={!input.trim() || loading}
-                  whileHover={{ scale: 1.05, boxShadow: '0 0 20px rgba(255,46,159,0.4)' }}
+                  whileHover={{ scale: 1.05, boxShadow: '0 0 20px rgba(194, 123, 58,0.4)' }}
                   whileTap={{ scale: 0.95 }}
                 >
                   {loading ? (
@@ -180,7 +180,7 @@ export default function ReplanPage() {
                 <motion.button 
                   className={styles.acceptBtn} 
                   onClick={handleAccept}
-                  whileHover={{ scale: 1.05, boxShadow: '0 0 30px rgba(0,240,255,0.3)' }}
+                  whileHover={{ scale: 1.05, boxShadow: '0 0 30px rgba(232, 166, 52,0.3)' }}
                   whileTap={{ scale: 0.95 }}
                 >
                   <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M3 7.5l3 3 5-5" stroke="#fff" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/></svg>
@@ -208,17 +208,17 @@ export default function ReplanPage() {
             <motion.div className={styles.insights} variants={itemVariants}>
               <div className={styles.insightItem}>
                 <span className={styles.insightLabel}>Efficiency Gain</span>
-                <span className={styles.insightValue} style={{ color: 'var(--plasma-cyan)', textShadow: '0 0 20px rgba(0,240,255,0.3)' }}>{result.insights?.productivityGain}</span>
+                <span className={styles.insightValue} style={{ color: 'var(--plasma-cyan)', textShadow: '0 0 20px rgba(232, 166, 52,0.3)' }}>{result.insights?.productivityGain}</span>
               </div>
               <div className={styles.insightDivider} />
               <div className={styles.insightItem}>
                 <span className={styles.insightLabel}>Deep Work Req.</span>
-                <span className={styles.insightValue} style={{ color: 'var(--plasma-purple)', textShadow: '0 0 20px rgba(124,92,255,0.3)' }}>{result.insights?.deepWorkHours}</span>
+                <span className={styles.insightValue} style={{ color: 'var(--plasma-purple)', textShadow: '0 0 20px rgba(245, 230, 200,0.3)' }}>{result.insights?.deepWorkHours}</span>
               </div>
               <div className={styles.insightDivider} />
               <div className={styles.insightItem}>
                 <span className={styles.insightLabel}>System Load (Risk)</span>
-                <span className={styles.insightValue} style={{ color: 'var(--plasma-pink)', textShadow: '0 0 20px rgba(255,46,159,0.3)' }}>{result.insights?.burnoutRisk}</span>
+                <span className={styles.insightValue} style={{ color: 'var(--plasma-pink)', textShadow: '0 0 20px rgba(194, 123, 58,0.3)' }}>{result.insights?.burnoutRisk}</span>
               </div>
             </motion.div>
 

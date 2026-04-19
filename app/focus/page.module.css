@@ -17,14 +17,14 @@
   padding:8px 16px; 
   border-radius:20px; 
   background-color:rgba(11, 11, 18, 0.4); 
-  border:1px solid rgba(0, 240, 255, 0.3); 
+  border:1px solid rgba(232, 166, 52, 0.3); 
   font-size:11px; 
   font-weight:600; 
   color:var(--plasma-cyan); 
   text-transform:uppercase;
   letter-spacing:0.1em;
   font-family:var(--font-mono);
-  box-shadow: 0 0 20px rgba(0, 240, 255, 0.1);
+  box-shadow: 0 0 20px rgba(232, 166, 52, 0.1);
   transition: all 0.3s ease;
 }
 .badgeDot { width:6px; height:6px; border-radius:3px; animation:pulse 2s ease-in-out infinite; }
@@ -54,7 +54,7 @@
   left: -50%;
   width: 200%;
   height: 200%;
-  background: conic-gradient(from 0deg, transparent, rgba(255, 46, 159, 0.1), transparent, rgba(124, 92, 255, 0.1), transparent);
+  background: conic-gradient(from 0deg, transparent, rgba(194, 123, 58, 0.1), transparent, rgba(245, 230, 200, 0.1), transparent);
   pointer-events: none;
   z-index: 0;
 }
@@ -97,15 +97,15 @@
   padding:0 32px; 
   height:56px;
   border-radius:16px; 
-  background:linear-gradient(135deg, rgba(0, 240, 255, 0.2), rgba(124, 92, 255, 0.2)); 
-  border:1px solid rgba(0, 240, 255, 0.3);
+  background:linear-gradient(135deg, rgba(232, 166, 52, 0.2), rgba(245, 230, 200, 0.2)); 
+  border:1px solid rgba(232, 166, 52, 0.3);
   font-size:13px; 
   font-weight:600; 
   text-transform:uppercase;
   letter-spacing:0.05em;
   font-family:var(--font-mono);
   color:#fff; 
-  box-shadow: 0 0 20px rgba(0,240,255,0.1);
+  box-shadow: 0 0 20px rgba(232, 166, 52,0.1);
 }
 .completeBtn:disabled { opacity:0.3; cursor:not-allowed; border-color:transparent; background:rgba(255,255,255,0.05); box-shadow:none; }
 
@@ -121,10 +121,10 @@
   color:var(--text-secondary); 
 }
 .pickerActive { 
-  background-color:rgba(124, 92, 255, 0.15); 
-  border-color:rgba(124, 92, 255, 0.4); 
+  background-color:rgba(245, 230, 200, 0.15); 
+  border-color:rgba(245, 230, 200, 0.4); 
   color:#fff; 
-  box-shadow: 0 0 15px rgba(124, 92, 255, 0.2);
+  box-shadow: 0 0 15px rgba(245, 230, 200, 0.2);
 }
 
 .quickStats { display:flex; align-items:center; gap:40px; }

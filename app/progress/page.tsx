@@ -45,7 +45,7 @@ export default function ProgressPage() {
             <svg width="120" height="120" viewBox="0 0 120 120" className={styles.ring}>
               <circle cx="60" cy="60" r="50" fill="none" stroke="#1A1A24" strokeWidth="8"/>
               <circle cx="60" cy="60" r="50" fill="none" stroke="url(#progressGrad)" strokeWidth="8" strokeLinecap="round" strokeDasharray={`${stats.completionPercent * 3.14} 314`} transform="rotate(-90 60 60)"/>
-              <defs><linearGradient id="progressGrad" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stopColor="#7C5CFF"/><stop offset="100%" stopColor="#22D3EE"/></linearGradient></defs>
+              <defs><linearGradient id="progressGrad" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stopColor="#F5E6C8"/><stop offset="100%" stopColor="#E8A634"/></linearGradient></defs>
             </svg>
             <span className={styles.ringValue}>{stats.completionPercent}%</span>
           </div>
@@ -58,7 +58,7 @@ export default function ProgressPage() {
           <span className={styles.cardHint}>Consecutive productive days</span>
           <div className={styles.streakDots}>
             {[0.3, 0.5, 0.7, 1, 0.5, 0.8, 1].map((opacity, i) => (
-              <div key={i} className={styles.streakDot} style={{ opacity, background: i >= 5 ? 'linear-gradient(135deg, #7C5CFF, #22D3EE)' : '#7C5CFF' }} />
+              <div key={i} className={styles.streakDot} style={{ opacity, background: i >= 5 ? 'linear-gradient(135deg, #F5E6C8, #E8A634)' : '#F5E6C8' }} />
             ))}
           </div>
         </div>
@@ -66,7 +66,7 @@ export default function ProgressPage() {
         <div className={styles.card}>
           <span className={styles.cardLabel}>Focus Hours</span>
           <span className={styles.bigValue}>{stats.weeklyFocusHours || 28.5}h</span>
-          <span className={styles.cardHint} style={{ color: '#22D3EE' }}>Best week this month</span>
+          <span className={styles.cardHint} style={{ color: '#E8A634' }}>Best week this month</span>
           <div className={styles.miniChart}>
             {[18, 28, 22, 38, 32, 48, 30].map((h, i) => (
               <div key={i} className={styles.miniBar} style={{ height: `${h}px`, opacity: i === 5 ? 1 : 0.5 }} />
@@ -97,8 +97,8 @@ export default function ProgressPage() {
           <div className={styles.activityChart}>
             {weekDays.map((day, i) => (
               <div key={i} className={styles.activityCol}>
-                <div className={styles.activityBar} style={{ height: `${weekData[i]}px`, background: i === 5 ? 'linear-gradient(180deg, #7C5CFF, rgba(124,92,255,0.2))' : `linear-gradient(180deg, rgba(124,92,255,${weekData[i]/200 + 0.2}), rgba(124,92,255,0.08))` }} />
-                <span className={styles.activityDay} style={{ color: i === 5 ? '#7C5CFF' : undefined }}>{day}</span>
+                <div className={styles.activityBar} style={{ height: `${weekData[i]}px`, background: i === 5 ? 'linear-gradient(180deg, #F5E6C8, rgba(245, 230, 200,0.2))' : `linear-gradient(180deg, rgba(245, 230, 200,${weekData[i]/200 + 0.2}), rgba(245, 230, 200,0.08))` }} />
+                <span className={styles.activityDay} style={{ color: i === 5 ? '#F5E6C8' : undefined }}>{day}</span>
               </div>
             ))}
           </div>

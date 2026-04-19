@@ -9,7 +9,7 @@ export default function Loader({ onComplete }: { onComplete: () => void }) {
   return (
     <motion.div
       className="fixed inset-0 z-[9999] flex flex-col items-center justify-center"
-      style={{ background: '#050507' }}
+      style={{ background: '#0A0908' }}
       initial={{ opacity: 1 }}
       animate={exiting ? { opacity: 0 } : { opacity: 1 }}
       transition={{ duration: 0.8, ease: 'easeInOut' }}
@@ -17,7 +17,8 @@ export default function Loader({ onComplete }: { onComplete: () => void }) {
     >
       {/* Energy Core */}
       <div className="relative flex items-center justify-center" style={{ width: 180, height: 180 }}>
-        {/* Outer spinning ring */}
+        
+        {/* Outer ambient blur */}
         <motion.div
           animate={{ rotate: 360 }}
           transition={{ repeat: Infinity, duration: 6, ease: 'linear' }}
@@ -25,38 +26,42 @@ export default function Loader({ onComplete }: { onComplete: () => void }) {
             position: 'absolute',
             inset: 0,
             borderRadius: '50%',
-            background: 'conic-gradient(from 0deg, #FF2E9F, #7C5CFF, #00F0FF, transparent)',
-            opacity: 0.3,
+            background: 'conic-gradient(from 0deg, #E8A634, #C27B3A, #F5E6C8, transparent)',
+            opacity: 0.2,
             filter: 'blur(20px)',
           }}
         />
-        {/* Inner pulsing orb */}
+
+        {/* Energy Ring */}
+        <motion.svg width="160" height="160" viewBox="0 0 160 160" style={{ position: 'absolute' }}>
+          <defs>
+            <linearGradient id="gradient" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" stopColor="#E8A634" />
+              <stop offset="100%" stopColor="#C27B3A" />
+            </linearGradient>
+          </defs>
+          <motion.circle
+            cx="80" cy="80" r="70"
+            fill="none"
+            stroke="url(#gradient)"
+            strokeWidth="2"
+            strokeDasharray="400"
+            initial={{ strokeDashoffset: 400 }}
+            animate={{ strokeDashoffset: 0, rotate: 360 }}
+            transition={{ duration: 3, ease: 'easeInOut' }}
+          />
+        </motion.svg>
+
+        {/* Central Orb */}
         <motion.div
-          animate={{
-            scale: [1, 1.3, 1],
-            opacity: [0.6, 1, 0.6],
-          }}
-          transition={{ repeat: Infinity, duration: 2.5, ease: 'easeInOut' }}
           style={{
-            width: 100,
-            height: 100,
-            borderRadius: '50%',
-            background: 'radial-gradient(circle, rgba(255,46,159,0.5) 0%, rgba(124,92,255,0.3) 40%, transparent 70%)',
-            filter: 'blur(8px)',
+            width: 60, height: 60, borderRadius: '50%',
+            background: '#F5E6C8',
+            boxShadow: '0 0 80px rgba(232, 166, 52, 0.4), 0 0 20px rgba(194, 123, 58, 0.8)',
           }}
-        />
-        {/* Core dot */}
-        <motion.div
-          animate={{ scale: [0.8, 1.1, 0.8] }}
-          transition={{ repeat: Infinity, duration: 1.5, ease: 'easeInOut' }}
-          style={{
-            position: 'absolute',
-            width: 16,
-            height: 16,
-            borderRadius: '50%',
-            background: '#fff',
-            boxShadow: '0 0 30px rgba(255,255,255,0.5), 0 0 60px rgba(255,46,159,0.3)',
-          }}
+          initial={{ scale: 0 }}
+          animate={{ scale: [0, 1.2, 1] }}
+          transition={{ duration: 1.5, ease: 'easeOut' }}
         />
       </div>
 
@@ -70,7 +75,7 @@ export default function Loader({ onComplete }: { onComplete: () => void }) {
           fontFamily: "'JetBrains Mono', monospace",
           fontSize: 11,
           letterSpacing: '0.25em',
-          color: 'rgba(255,255,255,0.4)',
+          color: '#E8A634',
           textTransform: 'uppercase',
         }}
       >
@@ -100,7 +105,7 @@ export default function Loader({ onComplete }: { onComplete: () => void }) {
             width: 3,
             height: 3,
             borderRadius: '50%',
-            background: i % 2 === 0 ? '#FF2E9F' : '#00F0FF',
+            background: i % 2 === 0 ? '#E8A634' : '#C27B3A',
           }}
         />
       ))}

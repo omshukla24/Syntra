@@ -62,7 +62,7 @@
   padding: 12px 24px;
   border-radius: 12px;
   background: rgba(11, 11, 18, 0.4);
-  border: 1px solid rgba(255, 46, 159, 0.3);
+  border: 1px solid rgba(194, 123, 58, 0.3);
   font-size: 13px;
   font-weight: 500;
   color: #fff;
@@ -84,8 +84,8 @@
 }
 
 .replanBtn:hover {
-  border-color: rgba(255, 46, 159, 0.8);
-  box-shadow: 0 0 30px rgba(255, 46, 159, 0.3);
+  border-color: rgba(194, 123, 58, 0.8);
+  box-shadow: 0 0 30px rgba(194, 123, 58, 0.3);
   transform: scale(1.05);
 }
 
@@ -258,7 +258,7 @@
   background: rgba(11, 11, 18, 0.4);
   backdrop-filter: blur(24px);
   -webkit-backdrop-filter: blur(24px);
-  border: 1px solid rgba(124, 92, 255, 0.2);
+  border: 1px solid rgba(245, 230, 200, 0.2);
   overflow: hidden;
   text-decoration: none;
   display: flex;
@@ -268,8 +268,8 @@
 }
 
 .replanCard:hover {
-  box-shadow: 0 0 60px rgba(124, 92, 255, 0.15), inset 0 0 40px rgba(124, 92, 255, 0.05);
-  border-color: rgba(124, 92, 255, 0.5);
+  box-shadow: 0 0 60px rgba(245, 230, 200, 0.15), inset 0 0 40px rgba(245, 230, 200, 0.05);
+  border-color: rgba(245, 230, 200, 0.5);
   transform: translateY(-4px);
 }
 
@@ -280,13 +280,13 @@
   width: 200px;
   height: 200px;
   border-radius: 50%;
-  background: radial-gradient(circle, rgba(124, 92, 255, 0.25), transparent 70%);
+  background: radial-gradient(circle, rgba(245, 230, 200, 0.25), transparent 70%);
   pointer-events: none;
   transition: all 0.3s ease;
 }
 
 .replanCard:hover .replanGlow {
-  background: radial-gradient(circle, rgba(255, 46, 159, 0.3), rgba(124, 92, 255, 0.2) 40%, transparent 70%);
+  background: radial-gradient(circle, rgba(194, 123, 58, 0.3), rgba(245, 230, 200, 0.2) 40%, transparent 70%);
   transform: scale(1.2);
 }
 

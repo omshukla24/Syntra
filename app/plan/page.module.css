@@ -7,7 +7,7 @@
 .weekGrid { display:flex;gap:12px;flex:1;min-height:600px; }
 .dayColumn { display:flex;flex-direction:column;gap:8px;flex:1; }
 .dayHeader { display:flex;flex-direction:column;align-items:center;padding:12px;border-radius:var(--radius-md);background-color:var(--bg-surface);border:1px solid var(--border-subtle);gap:2px; }
-.todayHeader { background:linear-gradient(135deg,rgba(124,92,255,0.2),rgba(34,211,238,0.15));border-color:rgba(124,92,255,0.3); }
+.todayHeader { background:linear-gradient(135deg,rgba(245, 230, 200,0.2),rgba(232, 166, 52,0.15));border-color:rgba(245, 230, 200,0.3); }
 .dayLabel { font-size:11px;font-weight:500;color:var(--text-muted);text-transform:uppercase; }
 .dayNum { font-size:20px;font-weight:600;color:var(--text-primary); }
 .todayBadge { font-size:9px;font-weight:600;color:var(--accent-purple);text-transform:uppercase;letter-spacing:0.1em; }

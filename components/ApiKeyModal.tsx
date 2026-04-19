@@ -41,7 +41,7 @@ export default function ApiKeyModal({ isOpen, onClose, onKeySubmitted }: ApiKeyM
         <div className={styles.header}>
           <div className={styles.headerIcon}>
             <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
-              <path d="M14 7a3 3 0 00-6 0v2H6v8h8V9h-2V7zm-2 0v2h-2V7a1 1 0 012 0z" fill="#7C5CFF"/>
+              <path d="M14 7a3 3 0 00-6 0v2H6v8h8V9h-2V7zm-2 0v2h-2V7a1 1 0 012 0z" fill="#F5E6C8"/>
             </svg>
           </div>
           <div>

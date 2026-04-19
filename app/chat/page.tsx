@@ -112,7 +112,7 @@ export default function ChatPage() {
             >
               <div className={styles.msgAvatar}>
                 {msg.role === 'user' ? 'USR' : (
-                  <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M8 1L14 4.5V11.5L8 15L2 11.5V4.5L8 1Z" stroke="#00F0FF" strokeWidth="1.2" fill="none"/><circle cx="8" cy="8" r="2" fill="#00F0FF"/></svg>
+                  <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M8 1L14 4.5V11.5L8 15L2 11.5V4.5L8 1Z" stroke="#E8A634" strokeWidth="1.2" fill="none"/><circle cx="8" cy="8" r="2" fill="#E8A634"/></svg>
                 )}
               </div>
               <div className={styles.msgContent}>
@@ -131,7 +131,7 @@ export default function ChatPage() {
               animate="visible"
             >
               <div className={styles.msgAvatar}>
-                <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M8 1L14 4.5V11.5L8 15L2 11.5V4.5L8 1Z" stroke="#00F0FF" strokeWidth="1.2" fill="none"/><circle cx="8" cy="8" r="2" fill="#00F0FF"/></svg>
+                <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M8 1L14 4.5V11.5L8 15L2 11.5V4.5L8 1Z" stroke="#E8A634" strokeWidth="1.2" fill="none"/><circle cx="8" cy="8" r="2" fill="#E8A634"/></svg>
               </div>
               <div className={styles.msgContent}>
                 <span className={styles.msgRole}>Syntra Core</span>
@@ -163,7 +163,7 @@ export default function ChatPage() {
           whileHover={{ scale: 1.05 }}
           whileTap={{ scale: 0.95 }}
         >
-          <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M1 8l6-6v4h7v4H7v4L1 8z" fill="#00F0FF"/></svg>
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M1 8l6-6v4h7v4H7v4L1 8z" fill="#E8A634"/></svg>
         </motion.button>
       </div>
     </div>
