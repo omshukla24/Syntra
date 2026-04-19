@@ -56,7 +56,7 @@ export default function Dashboard() {
         </div>
         <Link href="/replan" className={styles.replanBtn}>
           <div className={styles.btnGlow} />
-          <svg width="14" height="14" viewBox="0 0 14 14" fill="none" style={{ position: 'relative', zIndex: 2 }}><path d="M1 7h2l2-4 3 8 2-4h3" stroke="#1E293B" strokeWidth="1.3" strokeLinecap="round" strokeLinejoin="round"/></svg>
+          <svg width="14" height="14" viewBox="0 0 14 14" fill="none" style={{ position: 'relative', zIndex: 2 }}><path d="M1 7h2l2-4 3 8 2-4h3" stroke="currentColor" strokeWidth="1.3" strokeLinecap="round" strokeLinejoin="round"/></svg>
           <span style={{ position: 'relative', zIndex: 2 }}>Replan Reality</span>
         </Link>
       </motion.header>
@@ -81,7 +81,7 @@ export default function Dashboard() {
                   key={task.id} 
                   className={styles.taskItem}
                   variants={itemVariants}
-                  whileHover={{ x: 6, scale: 1.01, backgroundColor: 'rgba(15, 23, 42, 0.03)' }}
+                  whileHover={{ x: 6, scale: 1.01, backgroundColor: 'var(--glass-hover-bg)' }}
                   transition={{ type: 'spring', stiffness: 400, damping: 25 }}
                   layout
                 >

@@ -34,7 +34,7 @@ export default function ReplanPage() {
     // Trigger visual pulse effect on body
     const glowField = document.createElement('div');
     glowField.className = 'fixed inset-0 pointer-events-none z-50';
-    glowField.style.background = 'radial-gradient(circle at center, rgba(159, 141, 235,0.3) 0%, transparent 70%)';
+    glowField.style.background = 'radial-gradient(circle at center, var(--border-accent) 0%, transparent 70%)';
     glowField.style.animation = 'shockwave 1.5s ease-out forwards';
     document.body.appendChild(glowField);
     setTimeout(() => glowField.remove(), 1500);

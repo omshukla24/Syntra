@@ -134,9 +134,11 @@
 }
 
 .structureBtn:disabled {
-  opacity: 0.5;
+  opacity: 0.6;
   cursor: not-allowed;
-  filter: grayscale(1);
+  background: var(--bg-surface);
+  color: var(--text-muted);
+  box-shadow: none;
 }
 
 .spinner {

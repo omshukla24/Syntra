@@ -143,8 +143,8 @@ export default function VoicePage() {
             />
           )}
           <svg width="32" height="32" viewBox="0 0 32 32" fill="none" style={{ position: 'relative', zIndex: 2 }}>
-            <rect x="12" y="4" width="8" height="14" rx="4" stroke={isListening ? '#1E293B' : 'rgba(255, 255, 255, 0.6)'} strokeWidth="1.8"/>
-            <path d="M8 14a8 8 0 0016 0M16 24v4" stroke={isListening ? '#1E293B' : 'rgba(255, 255, 255, 0.6)'} strokeWidth="1.8" strokeLinecap="round"/>
+            <rect x="12" y="4" width="8" height="14" rx="4" stroke="currentColor" strokeWidth="1.8"/>
+            <path d="M8 14a8 8 0 0016 0M16 24v4" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round"/>
           </svg>
         </motion.button>
 

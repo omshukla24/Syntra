@@ -50,30 +50,30 @@
 /* Light Mode (Glass Canvas) */
 [data-theme="light"] {
   --bg-primary: #F7F7F9;
-  --bg-surface: rgba(255, 255, 255, 0.65);
-  --bg-elevated: rgba(255, 255, 255, 0.9);
-  --bg-input: rgba(255, 255, 255, 0.8);
+  --bg-surface: rgba(0, 0, 0, 0.03);
+  --bg-elevated: #FFFFFF;
+  --bg-input: rgba(0, 0, 0, 0.05);
 
-  --border-subtle: rgba(0, 0, 0, 0.03);
+  --border-subtle: rgba(0, 0, 0, 0.04);
   --border-default: rgba(0, 0, 0, 0.08);
-  --border-accent: rgba(124, 92, 255, 0.3);
+  --border-accent: rgba(106, 75, 224, 0.3);
 
   --text-primary: #12121A;
   --text-secondary: #5A5A70;
   --text-muted: #8E8E9F;
 
   /* Form & Interactive Elements */
-  --glass-bg: rgba(255, 255, 255, 0.7);
-  --glass-border: rgba(255, 255, 255, 0.9);
-  --glass-shadow: 0 10px 40px rgba(0, 0, 0, 0.05);
-  --glass-hover-bg: rgba(255, 255, 255, 0.9);
+  --glass-bg: rgba(255, 255, 255, 0.95);
+  --glass-border: rgba(0, 0, 0, 0.06);
+  --glass-shadow: 0 10px 40px rgba(0, 0, 0, 0.04);
+  --glass-hover-bg: rgba(0, 0, 0, 0.02);
 
   /* Plasma Palette (Pastel/vibrant shift for readability) */
   --plasma-pink: #E01A84;
   --plasma-purple: #6A4BE0;
   --plasma-cyan: #00B1CC;
 
-  --gradient-glass: linear-gradient(160deg, rgba(255,255,255,0.9), rgba(255,255,255,0.5));
+  --gradient-glass: linear-gradient(160deg, rgba(255,255,255,1), rgba(255,255,255,0.8));
 }
 
 /* ─── Reset ─── */
