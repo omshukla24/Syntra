@@ -1,6 +1,7 @@
 'use client';
 
 import { useState, useRef, useCallback } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
 import styles from './page.module.css';
 import { getUserApiKey, generateId } from '@/lib/storage';
 import ApiKeyModal from '@/components/ApiKeyModal';
@@ -58,7 +59,7 @@ export default function VoicePage() {
         window.speechSynthesis.speak(utterance);
       }
     } catch {
-      setMessages(prev => [...prev, { id: generateId(), role: 'assistant', content: 'Voice AI is unavailable. Please try typing instead.' }]);
+      setMessages(prev => [...prev, { id: generateId(), role: 'assistant', content: 'Connection fragmented. Fall back to manual input.' }]);
     } finally {
       setLoading(false);
     }
@@ -110,62 +111,110 @@ export default function VoicePage() {
     <div className={styles.container}>
       <ApiKeyModal isOpen={showKeyModal} onClose={() => setShowKeyModal(false)} onKeySubmitted={() => setShowKeyModal(false)} />
 
-      <div className={styles.voiceWrap}>
-        <div className={styles.badge}>
-          <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><rect x="5" y="1" width="4" height="7" rx="2" stroke="#22D3EE" strokeWidth="1.2"/><path d="M3 6a4 4 0 008 0M7 11v2" stroke="#22D3EE" strokeWidth="1.2" strokeLinecap="round"/></svg>
-          Talk to Syntra
+      <motion.div 
+        className={styles.voiceWrap}
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.6, ease: "easeOut" }}
+      >
+        <motion.div className={styles.badge} animate={isListening ? { boxShadow: '0 0 20px rgba(0,240,255,0.4)', borderColor: 'rgba(0,240,255,0.8)' } : {}}>
+          <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><rect x="5" y="1" width="4" height="7" rx="2" stroke="currentColor" strokeWidth="1.2"/><path d="M3 6a4 4 0 008 0M7 11v2" stroke="currentColor" strokeWidth="1.2" strokeLinecap="round"/></svg>
+          {isListening ? 'Acoustic Link Active' : 'Establishing Acoustic Link'}
+        </motion.div>
+
+        <div>
+          <h1 className={styles.title}>Vocal Interface</h1>
+          <p className={styles.subtitle}>Relay your directives verbally to the Syntra Core</p>
         </div>
 
-        <h1 className={styles.title}>Voice Assistant</h1>
-        <p className={styles.subtitle}>Speak naturally. Syntra listens and responds with voice.</p>
-
-        <button
+        <motion.button
           className={`${styles.micBtn} ${isListening ? styles.micActive : ''}`}
           onClick={toggleListening}
           disabled={loading}
+          whileHover={{ scale: 1.05 }}
+          whileTap={{ scale: 0.95 }}
+          animate={isListening ? { boxShadow: '0 0 60px rgba(0,240,255,0.3)', borderColor: '#00F0FF' } : {}}
         >
-          <div className={styles.micRing} />
-          <svg width="32" height="32" viewBox="0 0 32 32" fill="none">
-            <rect x="12" y="4" width="8" height="14" rx="4" stroke={isListening ? '#22D3EE' : '#A0A0B8'} strokeWidth="1.8"/>
-            <path d="M8 14a8 8 0 0016 0M16 24v4" stroke={isListening ? '#22D3EE' : '#A0A0B8'} strokeWidth="1.8" strokeLinecap="round"/>
+          {isListening && (
+            <motion.div 
+              className={styles.micRing} 
+              animate={{ rotate: 360 }}
+              transition={{ repeat: Infinity, duration: 4, ease: "linear" }}
+            />
+          )}
+          <svg width="32" height="32" viewBox="0 0 32 32" fill="none" style={{ position: 'relative', zIndex: 2 }}>
+            <rect x="12" y="4" width="8" height="14" rx="4" stroke={isListening ? '#fff' : 'rgba(255,255,255,0.5)'} strokeWidth="1.8"/>
+            <path d="M8 14a8 8 0 0016 0M16 24v4" stroke={isListening ? '#fff' : 'rgba(255,255,255,0.5)'} strokeWidth="1.8" strokeLinecap="round"/>
           </svg>
-        </button>
+        </motion.button>
 
-        {isListening && (
-          <div className={styles.listeningWrap}>
-            <div className={styles.waveform}>
-              {[...Array(5)].map((_, i) => (
-                <div key={i} className={styles.wave} style={{ animationDelay: `${i * 0.1}s` }} />
-              ))}
-            </div>
-            <span className={styles.listeningText}>
-              {transcript || 'Listening...'}
-            </span>
-          </div>
-        )}
+        <AnimatePresence mode="wait">
+          {isListening && (
+            <motion.div 
+              className={styles.listeningWrap}
+              initial={{ opacity: 0, height: 0 }}
+              animate={{ opacity: 1, height: 'auto' }}
+              exit={{ opacity: 0, height: 0 }}
+            >
+              <div className={styles.waveform}>
+                {[...Array(5)].map((_, i) => (
+                  <motion.div 
+                    key={i} 
+                    className={styles.wave} 
+                    animate={{ scaleY: [0.5, 1.5, 0.5] }}
+                    transition={{ repeat: Infinity, duration: 0.6, delay: i * 0.1, ease: 'easeInOut' }}
+                  />
+                ))}
+              </div>
+              <span className={styles.listeningText}>
+                {transcript || 'Awaiting input...'}
+              </span>
+            </motion.div>
+          )}
 
-        {loading && <span className={styles.processingText}>Processing...</span>}
+          {loading && (
+            <motion.span 
+              className={styles.processingText}
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+            >
+              Processing vocal data...
+            </motion.span>
+          )}
+        </AnimatePresence>
 
         <div className={styles.messages}>
-          {messages.map(msg => (
-            <div key={msg.id} className={`${styles.message} ${msg.role === 'user' ? styles.userMsg : styles.aiMsg}`}>
-              <span className={styles.msgRole}>{msg.role === 'user' ? 'You' : 'Syntra'}</span>
-              <p className={styles.msgText}>{msg.content}</p>
-            </div>
-          ))}
+          <AnimatePresence>
+            {messages.map((msg, i) => (
+              <motion.div 
+                key={msg.id} 
+                className={`${styles.message} ${msg.role === 'user' ? styles.userMsg : styles.aiMsg}`}
+                initial={{ opacity: 0, y: 10, scale: 0.95 }}
+                animate={{ opacity: 1, y: 0, scale: 1 }}
+                transition={{ delay: 0.1 }}
+                layout
+              >
+                <span className={styles.msgRole}>{msg.role === 'user' ? 'Operator' : 'Syntra'}</span>
+                <p className={styles.msgText}>{msg.content}</p>
+              </motion.div>
+            ))}
+          </AnimatePresence>
         </div>
 
         <div className={styles.textFallback}>
           <input
             className={styles.textInput}
-            placeholder="Or type your message..."
+            placeholder="Manual input fallback..."
             value={textInput}
             onChange={e => setTextInput(e.target.value)}
             onKeyDown={e => e.key === 'Enter' && handleTextSend()}
           />
-          <button className={styles.textSendBtn} onClick={handleTextSend} disabled={!textInput.trim()}>Send</button>
+          <button className={styles.textSendBtn} onClick={handleTextSend} disabled={!textInput.trim()}>
+            Execute
+          </button>
         </div>
-      </div>
+      </motion.div>
     </div>
   );
 }

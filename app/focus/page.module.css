@@ -1,39 +1,136 @@
-.container { padding:32px 40px; min-height:100vh; display:flex; align-items:center; justify-content:center; animation:fadeIn 0.3s ease; }
-.loading { display:flex;align-items:center;justify-content:center;height:60vh;font-size:16px;color:var(--text-muted); }
+.container { 
+  padding: 40px; 
+  min-height: 100vh; 
+  display: flex; 
+  align-items: center; 
+  justify-content: center; 
+  position: relative;
+  z-index: 10;
+}
+.loading { display:flex;align-items:center;justify-content:center;height:60vh;font-size:13px;text-transform:uppercase;letter-spacing:0.2em;color:var(--text-muted); }
 .focusWrap { display:flex; flex-direction:column; align-items:center; gap:40px; width:600px; max-width:100%; }
-.badge { display:flex; align-items:center; gap:8px; padding:6px 14px; border-radius:20px; background-color:rgba(34,211,238,0.1); border:1px solid rgba(34,211,238,0.2); font-size:12px; font-weight:500; color:#22D3EE; }
-.badgeDot { width:6px; height:6px; border-radius:3px; background-color:#22D3EE; animation:pulse 2s ease-in-out infinite; }
-.title { font-family:var(--font-display); font-size:48px; font-weight:700; color:var(--text-primary); letter-spacing:-0.03em; text-align:center; }
-.subtitle { font-size:15px; color:var(--text-muted); text-align:center; }
 
-.timerCard { display:flex; flex-direction:column; align-items:center; gap:24px; padding:40px; border-radius:20px; background-color:var(--bg-surface); border:1px solid var(--border-subtle); width:100%; }
-.timer { font-family:var(--font-mono); font-size:72px; font-weight:300; color:var(--text-primary); letter-spacing:-0.02em; }
-.progressBar { width:100%; height:4px; border-radius:2px; background-color:var(--bg-elevated); overflow:hidden; }
-.progressFill { height:4px; border-radius:2px; background:linear-gradient(90deg,#7C5CFF,#22D3EE); transition:width 1s linear; }
-.taskInfo { display:flex; flex-direction:column; align-items:center; gap:4px; }
-.taskName { font-size:18px; font-weight:600; color:var(--text-primary); text-align:center; }
-.taskMeta { font-size:13px; color:var(--text-muted); text-transform:capitalize; }
-.noTask { font-size:14px; color:var(--text-muted); }
+.badge { 
+  display:flex; 
+  align-items:center; 
+  gap:8px; 
+  padding:8px 16px; 
+  border-radius:20px; 
+  background-color:rgba(11, 11, 18, 0.4); 
+  border:1px solid rgba(0, 240, 255, 0.3); 
+  font-size:11px; 
+  font-weight:600; 
+  color:var(--plasma-cyan); 
+  text-transform:uppercase;
+  letter-spacing:0.1em;
+  font-family:var(--font-mono);
+  box-shadow: 0 0 20px rgba(0, 240, 255, 0.1);
+  transition: all 0.3s ease;
+}
+.badgeDot { width:6px; height:6px; border-radius:3px; animation:pulse 2s ease-in-out infinite; }
 
-.controls { display:flex; align-items:center; gap:12px; }
-.controlBtn { width:48px; height:48px; border-radius:12px; border:1px solid var(--border-default); display:flex; align-items:center; justify-content:center; transition:background-color 0.15s ease; }
-.controlBtn:hover { background-color:rgba(255,255,255,0.05); }
-.completeBtn { display:flex; align-items:center; gap:8px; padding:12px 24px; border-radius:12px; background:var(--gradient-primary); font-size:14px; font-weight:600; color:#fff; transition:opacity 0.15s ease; }
-.completeBtn:hover:not(:disabled) { opacity:0.9; }
-.completeBtn:disabled { opacity:0.4; cursor:not-allowed; }
+.title { font-family:var(--font-display); font-size:48px; font-weight:300; color:#fff; letter-spacing:-0.03em; text-align:center; }
+.subtitle { font-size:13px; color:var(--text-muted); text-align:center; text-transform:uppercase; letter-spacing:0.2em; margin-top:8px; }
 
-.taskPicker { width:100%; }
-.pickerLabel { font-size:12px; color:var(--text-muted); display:block; margin-bottom:8px; }
-.pickerList { display:flex; flex-wrap:wrap; gap:6px; }
-.pickerItem { padding:6px 14px; border-radius:var(--radius-sm); border:1px solid var(--border-default); font-size:12px; color:var(--text-muted); transition:all 0.15s ease; }
-.pickerItem:hover { color:var(--text-secondary); border-color:var(--border-default); }
-.pickerActive { background-color:rgba(124,92,255,0.1); border-color:var(--border-accent); color:var(--accent-purple); }
+.timerCard { 
+  position:relative;
+  display:flex; 
+  flex-direction:column; 
+  align-items:center; 
+  gap:32px; 
+  padding:48px; 
+  border-radius:24px; 
+  background-color:rgba(11, 11, 18, 0.4); 
+  border:1px solid rgba(255, 255, 255, 0.05); 
+  width:100%; 
+  backdrop-filter: blur(24px);
+  overflow:hidden;
+  transition: all 0.5s ease;
+}
 
-.quickStats { display:flex; align-items:center; gap:24px; }
-.quickStat { display:flex; flex-direction:column; align-items:center; gap:4px; }
-.quickValue { font-size:20px; font-weight:600; color:var(--text-primary); }
-.quickLabel { font-size:11px; color:var(--text-muted); }
-.quickDivider { width:1px; height:32px; background-color:var(--border-subtle); }
+.timerGlow {
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: conic-gradient(from 0deg, transparent, rgba(255, 46, 159, 0.1), transparent, rgba(124, 92, 255, 0.1), transparent);
+  pointer-events: none;
+  z-index: 0;
+}
 
-@keyframes fadeIn { from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)} }
-@keyframes pulse { 0%,100%{opacity:1}50%{opacity:0.5} }
+.timer { 
+  position:relative;
+  z-index:1;
+  font-family:var(--font-mono); 
+  font-size:96px; 
+  font-weight:100; 
+  color:#fff; 
+  letter-spacing:-0.04em; 
+  display:flex;
+  text-shadow: 0 0 40px rgba(255,255,255,0.2);
+}
+
+.progressBar { width:100%; height:4px; border-radius:2px; background-color:rgba(255,255,255,0.05); overflow:hidden; position:relative; z-index:1; }
+.progressFill { height:4px; border-radius:2px; background:linear-gradient(90deg,var(--plasma-pink),var(--plasma-cyan)); box-shadow: 0 0 10px var(--plasma-cyan); }
+
+.taskInfo { display:flex; flex-direction:column; align-items:center; gap:6px; position:relative; z-index:1; }
+.taskName { font-size:20px; font-weight:400; color:#fff; text-align:center; letter-spacing:-0.01em; }
+.taskMeta { font-size:12px; color:var(--text-muted); text-transform:uppercase; letter-spacing:0.1em; }
+.noTask { font-size:13px; color:var(--text-muted); position:relative; z-index:1; }
+
+.controls { display:flex; align-items:center; gap:16px; position:relative; z-index:1; }
+.controlBtn { 
+  width:56px; 
+  height:56px; 
+  border-radius:16px; 
+  border:1px solid rgba(255,255,255,0.1); 
+  display:flex; 
+  align-items:center; 
+  justify-content:center; 
+  background-color:rgba(255,255,255,0.03); 
+}
+.completeBtn { 
+  display:flex; 
+  align-items:center; 
+  gap:10px; 
+  padding:0 32px; 
+  height:56px;
+  border-radius:16px; 
+  background:linear-gradient(135deg, rgba(0, 240, 255, 0.2), rgba(124, 92, 255, 0.2)); 
+  border:1px solid rgba(0, 240, 255, 0.3);
+  font-size:13px; 
+  font-weight:600; 
+  text-transform:uppercase;
+  letter-spacing:0.05em;
+  font-family:var(--font-mono);
+  color:#fff; 
+  box-shadow: 0 0 20px rgba(0,240,255,0.1);
+}
+.completeBtn:disabled { opacity:0.3; cursor:not-allowed; border-color:transparent; background:rgba(255,255,255,0.05); box-shadow:none; }
+
+.taskPicker { width:100%; text-align:center; }
+.pickerLabel { font-size:10px; color:var(--text-muted); display:block; margin-bottom:12px; text-transform:uppercase; letter-spacing:0.1em; }
+.pickerList { display:flex; flex-wrap:wrap; justify-content:center; gap:8px; }
+.pickerItem { 
+  padding:8px 16px; 
+  border-radius:12px; 
+  border:1px solid rgba(255,255,255,0.05); 
+  background:rgba(11, 11, 18, 0.4);
+  font-size:12px; 
+  color:var(--text-secondary); 
+}
+.pickerActive { 
+  background-color:rgba(124, 92, 255, 0.15); 
+  border-color:rgba(124, 92, 255, 0.4); 
+  color:#fff; 
+  box-shadow: 0 0 15px rgba(124, 92, 255, 0.2);
+}
+
+.quickStats { display:flex; align-items:center; gap:40px; }
+.quickStat { display:flex; flex-direction:column; align-items:center; gap:6px; }
+.quickValue { font-size:24px; font-weight:300; color:#fff; font-family:var(--font-display); }
+.quickLabel { font-size:10px; color:var(--text-muted); text-transform:uppercase; letter-spacing:0.15em; }
+.quickDivider { width:1px; height:40px; background-color:rgba(255,255,255,0.05); }
+
+@keyframes pulse { 0%,100%{opacity:1; transform:scale(1)}50%{opacity:0.5; transform:scale(0.8)} }

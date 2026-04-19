@@ -1,68 +1,50 @@
 'use client';
 
-import { useEffect, useRef, ReactNode } from 'react';
+import { useEffect, useRef } from 'react';
 
-export default function CursorGlow({ children }: { children: ReactNode }) {
+export default function CursorGlow() {
   const glowRef = useRef<HTMLDivElement>(null);
-  const contentRef = useRef<HTMLDivElement>(null);
+  const pos = useRef({ x: 0, y: 0 });
+  const target = useRef({ x: 0, y: 0 });
+  const raf = useRef<number>(0);
 
   useEffect(() => {
-    const handleMouseMove = (e: MouseEvent) => {
-      if (glowRef.current) {
-        glowRef.current.style.background = `radial-gradient(600px circle at ${e.clientX}px ${e.clientY}px, rgba(124, 92, 255, 0.04), rgba(77, 166, 255, 0.02), transparent 60%)`;
-      }
-      // Subtle parallax on content
-      if (contentRef.current) {
-        const x = (e.clientX / window.innerWidth - 0.5) * 4;
-        const y = (e.clientY / window.innerHeight - 0.5) * 4;
-        contentRef.current.style.transform = `translate(${x}px, ${y}px)`;
-      }
+    const handleMove = (e: MouseEvent) => {
+      target.current = { x: e.clientX, y: e.clientY };
     };
 
-    window.addEventListener('mousemove', handleMouseMove);
-    return () => window.removeEventListener('mousemove', handleMouseMove);
+    const animate = () => {
+      pos.current.x += (target.current.x - pos.current.x) * 0.08;
+      pos.current.y += (target.current.y - pos.current.y) * 0.08;
+
+      if (glowRef.current) {
+        glowRef.current.style.left = `${pos.current.x - 150}px`;
+        glowRef.current.style.top = `${pos.current.y - 150}px`;
+      }
+      raf.current = requestAnimationFrame(animate);
+    };
+
+    window.addEventListener('mousemove', handleMove);
+    raf.current = requestAnimationFrame(animate);
+
+    return () => {
+      window.removeEventListener('mousemove', handleMove);
+      cancelAnimationFrame(raf.current);
+    };
   }, []);
 
   return (
-    <div style={{ position: 'relative', minHeight: '100vh' }}>
-      {/* Cursor-reactive glow layer */}
-      <div
-        ref={glowRef}
-        style={{
-          position: 'fixed',
-          inset: 0,
-          pointerEvents: 'none',
-          zIndex: 0,
-          transition: 'background 0.3s ease',
-        }}
-      />
-      {/* Static ambient orbs */}
-      <div style={{
-        position: 'fixed',
-        top: '-120px',
-        left: '15%',
-        width: '500px',
-        height: '500px',
-        borderRadius: '50%',
-        background: 'radial-gradient(circle, rgba(124, 92, 255, 0.06) 0%, transparent 60%)',
-        pointerEvents: 'none',
-        zIndex: 0,
-      }} />
-      <div style={{
-        position: 'fixed',
-        bottom: '-80px',
-        right: '10%',
-        width: '450px',
-        height: '450px',
-        borderRadius: '50%',
-        background: 'radial-gradient(circle, rgba(34, 211, 238, 0.04) 0%, transparent 60%)',
-        pointerEvents: 'none',
-        zIndex: 0,
-      }} />
-      {/* Content with parallax */}
-      <div ref={contentRef} style={{ position: 'relative', zIndex: 1, transition: 'transform 0.15s ease-out' }}>
-        {children}
-      </div>
-    </div>
+    <div
+      ref={glowRef}
+      className="fixed pointer-events-none"
+      style={{
+        zIndex: 1,
+        width: 300,
+        height: 300,
+        background: 'radial-gradient(circle, rgba(255,46,159,0.12) 0%, rgba(124,92,255,0.04) 40%, transparent 70%)',
+        filter: 'blur(40px)',
+        willChange: 'left, top',
+      }}
+    />
   );
 }

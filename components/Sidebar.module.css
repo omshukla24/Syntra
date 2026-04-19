@@ -1,93 +1,112 @@
 .sidebar {
   width: var(--sidebar-width);
-  min-height: 100vh;
-  background: linear-gradient(180deg, rgba(12, 12, 20, 0.95), rgba(8, 8, 14, 0.98));
-  border-right: 1px solid rgba(124, 92, 255, 0.04);
+  height: 100vh;
+  background: rgba(11, 11, 18, 0.4);
+  backdrop-filter: blur(20px);
+  border-right: 1px solid rgba(255, 255, 255, 0.04);
   display: flex;
   flex-direction: column;
-  padding: 20px 12px;
-  gap: 8px;
+  padding: 24px 12px;
+  gap: 12px;
   position: fixed;
   left: 0;
   top: 0;
   z-index: 100;
-  transition: width 0.2s ease;
+  transition: width 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .sidebar.collapsed {
-  width: 64px;
+  width: 72px;
 }
 
 .logo {
   display: flex;
   align-items: center;
-  gap: 10px;
+  gap: 12px;
   padding: 8px 12px;
-  margin-bottom: 16px;
+  margin-bottom: 24px;
 }
 
 .logoIcon {
-  width: 32px;
-  height: 32px;
+  width: 36px;
+  height: 36px;
   border-radius: 10px;
-  background: linear-gradient(135deg, rgba(124, 92, 255, 0.3), rgba(77, 166, 255, 0.2));
+  background: var(--gradient-energy);
   display: flex;
   align-items: center;
   justify-content: center;
   flex-shrink: 0;
-  box-shadow: 0 0 20px rgba(124, 92, 255, 0.12), 0 0 40px rgba(124, 92, 255, 0.04);
+  box-shadow: 0 0 20px rgba(255, 46, 159, 0.3);
 }
 
 .logoText {
   font-family: var(--font-display);
   font-size: 18px;
-  font-weight: 700;
-  color: rgba(232, 232, 240, 0.95);
-  letter-spacing: -0.02em;
+  font-weight: 300;
+  color: #fff;
+  letter-spacing: 0.2em;
 }
 
 .navList {
   display: flex;
   flex-direction: column;
-  gap: 2px;
+  gap: 4px;
   flex: 1;
 }
 
-.navItem {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  padding: 10px 12px;
-  border-radius: 10px;
-  font-size: 14px;
-  font-weight: 400;
-  color: rgba(160, 160, 184, 0.35);
-  transition: all 0.2s ease;
+.navItemWrapper {
   text-decoration: none;
 }
 
+.navItem {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 14px;
+  border-radius: 12px;
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  font-family: var(--font-mono);
+  transition: all 0.2s ease;
+  overflow: hidden;
+}
+
 .navItem:hover {
-  color: rgba(160, 160, 184, 0.6);
-  background: rgba(255, 255, 255, 0.02);
+  color: #fff;
+  background: rgba(255, 255, 255, 0.03);
+  transform: translateX(4px);
 }
 
 .navItem.active {
-  color: rgba(124, 92, 255, 0.8);
-  background: linear-gradient(135deg, rgba(124, 92, 255, 0.12), rgba(124, 92, 255, 0.04));
-  font-weight: 500;
-  box-shadow: 0 0 12px rgba(124, 92, 255, 0.06);
+  color: #fff;
+}
+
+.activeGlow {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(90deg, rgba(124, 92, 255, 0.2), rgba(0, 240, 255, 0.05));
+  border-radius: 12px;
+  border-left: 2px solid var(--plasma-cyan);
+  z-index: 1;
 }
 
 .collapseBtn {
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 8px;
-  border-radius: 8px;
-  transition: background-color 0.15s ease;
+  padding: 12px;
+  border-radius: 12px;
+  transition: background-color 0.2s ease;
   margin-top: auto;
+  border: 1px solid rgba(255, 255, 255, 0.04);
+  background: rgba(11, 11, 18, 0.4);
 }
 
 .collapseBtn:hover {
-  background-color: rgba(255, 255, 255, 0.03);
+  background-color: rgba(255, 255, 255, 0.08);
+  border-color: rgba(255, 255, 255, 0.1);
 }

@@ -1,6 +1,7 @@
 'use client';
 
 import { useState, useEffect, useRef, useCallback } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
 import styles from './page.module.css';
 import { getTasks, addFocusSession, updateTask } from '@/lib/storage';
 import { Task } from '@/lib/types';
@@ -48,24 +49,60 @@ export default function FocusPage() {
     return `${h.toString().padStart(2, '0')}:${m.toString().padStart(2, '0')}:${sec.toString().padStart(2, '0')}`;
   };
 
-  if (!mounted) return <div className={styles.container}><div className={styles.loading}>Loading...</div></div>;
+  if (!mounted) return <div className={styles.container}><div className={styles.loading}>Connecting Time Core...</div></div>;
+
+  const progressPct = selectedTask?.estimatedMinutes ? Math.min(100, (seconds / 60 / selectedTask.estimatedMinutes) * 100) : 0;
 
   return (
     <div className={styles.container}>
-      <div className={styles.focusWrap}>
-        <div className={styles.badge}>
-          <div className={styles.badgeDot} />
-          <span>{isRunning ? 'Focus Mode Active' : 'Focus Mode Ready'}</span>
+      <motion.div 
+        className={styles.focusWrap}
+        initial={{ opacity: 0, scale: 0.95 }}
+        animate={{ opacity: 1, scale: 1 }}
+        transition={{ duration: 0.5, ease: 'easeOut' }}
+      >
+        <motion.div className={styles.badge} animate={isRunning ? { boxShadow: '0 0 20px rgba(255,46,159,0.3)', borderColor: 'rgba(255,46,159,0.5)', color: 'var(--plasma-pink)' } : {}}>
+          <div className={styles.badgeDot} style={{ backgroundColor: isRunning ? 'var(--plasma-pink)' : 'var(--plasma-cyan)' }} />
+          <span>{isRunning ? 'Temporal Lock Active' : 'System Ready'}</span>
+        </motion.div>
+
+        <div>
+          <h1 className={styles.title}>Deep Work</h1>
+          <p className={styles.subtitle}>Isolate. Execute. Prevail.</p>
         </div>
 
-        <h1 className={styles.title}>Deep Work</h1>
-        <p className={styles.subtitle}>Distraction-free. One task at a time.</p>
+        <motion.div className={styles.timerCard} animate={isRunning ? { boxShadow: '0 0 80px rgba(124,92,255,0.08), inset 0 0 40px rgba(124,92,255,0.03)' } : {}}>
+          {isRunning && (
+            <motion.div 
+              className={styles.timerGlow}
+              animate={{ rotate: 360 }}
+              transition={{ repeat: Infinity, duration: 8, ease: "linear" }}
+            />
+          )}
 
-        <div className={styles.timerCard}>
-          <div className={styles.timer}>{formatTime(seconds)}</div>
+          <div className={styles.timer}>
+            <AnimatePresence mode="popLayout">
+              {formatTime(seconds).split('').map((char, i) => (
+                <motion.span
+                  key={`${i}-${char}`}
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: -20 }}
+                  transition={{ duration: 0.2 }}
+                  style={{ display: 'inline-block', width: char === ':' ? '20px' : '48px', textAlign: 'center', color: isRunning ? '#fff' : 'var(--text-primary)' }}
+                >
+                  {char}
+                </motion.span>
+              ))}
+            </AnimatePresence>
+          </div>
 
           <div className={styles.progressBar}>
-            <div className={styles.progressFill} style={{ width: selectedTask?.estimatedMinutes ? `${Math.min(100, (seconds / 60 / selectedTask.estimatedMinutes) * 100)}%` : '0%' }} />
+            <motion.div 
+              className={styles.progressFill} 
+              animate={{ width: `${progressPct}%` }}
+              transition={{ ease: "linear", duration: 1 }}
+            />
           </div>
 
           {selectedTask ? (
@@ -74,39 +111,57 @@ export default function FocusPage() {
               <span className={styles.taskMeta}>{selectedTask.description || selectedTask.category}</span>
             </div>
           ) : (
-            <p className={styles.noTask}>No active tasks. Create one first.</p>
+            <p className={styles.noTask}>No active nodes allocated.</p>
           )}
 
           <div className={styles.controls}>
-            <button className={styles.controlBtn} onClick={() => setIsRunning(!isRunning)}>
+            <motion.button 
+              className={styles.controlBtn} 
+              onClick={() => setIsRunning(!isRunning)}
+              whileHover={{ scale: 1.1, backgroundColor: 'rgba(255,255,255,0.1)' }}
+              whileTap={{ scale: 0.95 }}
+            >
               {isRunning ? (
-                <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><rect x="5" y="4" width="3" height="12" rx="1" fill="#A0A0B8"/><rect x="12" y="4" width="3" height="12" rx="1" fill="#A0A0B8"/></svg>
+                <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><rect x="5" y="4" width="3" height="12" rx="1" fill="#fff"/><rect x="12" y="4" width="3" height="12" rx="1" fill="#fff"/></svg>
               ) : (
-                <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M6 4l10 6-10 6V4z" fill="#A0A0B8"/></svg>
+                <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M6 4l10 6-10 6V4z" fill="#fff"/></svg>
               )}
-            </button>
-            <button className={styles.controlBtn} onClick={() => { setSeconds(0); setIsRunning(false); }}>
-              <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><rect x="4" y="4" width="12" height="12" rx="2" fill="#A0A0B8"/></svg>
-            </button>
-            <button className={styles.completeBtn} onClick={handleComplete} disabled={!selectedTask}>
+            </motion.button>
+            <motion.button 
+              className={styles.controlBtn} 
+              onClick={() => { setSeconds(0); setIsRunning(false); }}
+              whileHover={{ scale: 1.1, backgroundColor: 'rgba(255,255,255,0.1)' }}
+              whileTap={{ scale: 0.95 }}
+            >
+              <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><rect x="4" y="4" width="12" height="12" rx="2" fill="var(--text-secondary)"/></svg>
+            </motion.button>
+            <motion.button 
+              className={styles.completeBtn} 
+              onClick={handleComplete} 
+              disabled={!selectedTask}
+              whileHover={selectedTask ? { scale: 1.05, boxShadow: '0 0 20px rgba(0,240,255,0.3)' } : {}}
+              whileTap={selectedTask ? { scale: 0.95 } : {}}
+            >
               <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M3 7.5l3 3 5-5" stroke="#fff" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/></svg>
-              Mark Complete
-            </button>
+              Finalize Node
+            </motion.button>
           </div>
-        </div>
+        </motion.div>
 
         {tasks.length > 1 && (
           <div className={styles.taskPicker}>
-            <span className={styles.pickerLabel}>Switch task:</span>
+            <span className={styles.pickerLabel}>Available Nodes:</span>
             <div className={styles.pickerList}>
               {tasks.map(t => (
-                <button
+                <motion.button
                   key={t.id}
                   className={`${styles.pickerItem} ${selectedTask?.id === t.id ? styles.pickerActive : ''}`}
                   onClick={() => { setSelectedTask(t); setSeconds(0); setIsRunning(false); }}
+                  whileHover={{ scale: 1.05 }}
+                  whileTap={{ scale: 0.95 }}
                 >
                   {t.title}
-                </button>
+                </motion.button>
               ))}
             </div>
           </div>
@@ -115,15 +170,15 @@ export default function FocusPage() {
         <div className={styles.quickStats}>
           <div className={styles.quickStat}>
             <span className={styles.quickValue}>{tasks.length}</span>
-            <span className={styles.quickLabel}>Tasks Left</span>
+            <span className={styles.quickLabel}>Nodes Left</span>
           </div>
           <div className={styles.quickDivider} />
           <div className={styles.quickStat}>
-            <span className={styles.quickValue} style={{ color: '#22D3EE' }}>{formatTime(seconds).slice(0, 5)}</span>
-            <span className={styles.quickLabel}>This Session</span>
+            <span className={styles.quickValue} style={{ color: 'var(--plasma-cyan)', textShadow: '0 0 20px rgba(0,240,255,0.4)' }}>{formatTime(seconds).slice(0, 5)}</span>
+            <span className={styles.quickLabel}>Session Yield</span>
           </div>
         </div>
-      </div>
+      </motion.div>
     </div>
   );
 }

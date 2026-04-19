@@ -1,65 +1,58 @@
+@import 'tailwindcss';
+
 /* ═══════════════════════════════════════════════════════════
-   SYNTRA — Design System Tokens + Global Styles
-   From thought to system.
+   SYNTRA — Living System Design Tokens
+   Final Boss Mode — Plasma Neon Aesthetic
    ═══════════════════════════════════════════════════════════ */
 
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@300;400;500;600;700&family=Outfit:wght@400;500;600;700&display=swap');
 
-:root {
-  /* ─── Colors ─── */
-  --bg-primary: #08080D;
-  --bg-surface: #111118;
-  --bg-elevated: #1A1A24;
-  --bg-input: #0C0C14;
+@theme {
+  --color-void: #050507;
+  --color-surface: #0B0B12;
+  --color-elevated: #12121E;
+  --color-plasma-pink: #FF2E9F;
+  --color-plasma-purple: #7C5CFF;
+  --color-plasma-cyan: #00F0FF;
+}
 
-  --border-subtle: #1A1A24;
-  --border-default: #2A2A3A;
-  --border-accent: rgba(124, 92, 255, 0.3);
+:root {
+  /* ─── Void Palette ─── */
+  --bg-primary: #050507;
+  --bg-surface: #0B0B12;
+  --bg-elevated: #12121E;
+  --bg-input: #0A0A10;
+
+  --border-subtle: rgba(255, 255, 255, 0.03);
+  --border-default: rgba(255, 255, 255, 0.06);
+  --border-accent: rgba(124, 92, 255, 0.2);
 
   --text-primary: #E8E8F0;
   --text-secondary: #A0A0B8;
-  --text-muted: #6E6E82;
+  --text-muted: #5A5A70;
 
-  --accent-purple: #7C5CFF;
-  --accent-blue: #4DA6FF;
-  --accent-cyan: #22D3EE;
+  /* ─── Plasma Palette ─── */
+  --plasma-pink: #FF2E9F;
+  --plasma-purple: #7C5CFF;
+  --plasma-cyan: #00F0FF;
   --accent-green: #4ADE80;
   --accent-yellow: #FFBB33;
   --accent-red: #FF5C5C;
 
-  --gradient-primary: linear-gradient(135deg, #7C5CFF, #4DA6FF);
-  --gradient-full: linear-gradient(135deg, #7C5CFF, #4DA6FF, #22D3EE);
-  --gradient-surface: linear-gradient(160deg, rgba(124, 92, 255, 0.08), rgba(34, 211, 238, 0.04));
+  --gradient-plasma: linear-gradient(135deg, #FF2E9F, #7C5CFF, #00F0FF);
+  --gradient-energy: linear-gradient(135deg, #FF2E9F, #7C5CFF);
+  --gradient-glass: linear-gradient(160deg, rgba(255,255,255,0.04), rgba(255,255,255,0.01));
 
   /* ─── Typography ─── */
   --font-ui: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
   --font-display: 'Outfit', sans-serif;
   --font-mono: 'JetBrains Mono', monospace;
 
-  /* ─── Spacing ─── */
-  --space-1: 4px;
-  --space-2: 8px;
-  --space-3: 12px;
-  --space-4: 16px;
-  --space-5: 20px;
-  --space-6: 24px;
-  --space-8: 32px;
-  --space-10: 40px;
-  --space-12: 48px;
-
-  /* ─── Radii ─── */
-  --radius-sm: 6px;
-  --radius-md: 8px;
-  --radius-lg: 12px;
-  --radius-xl: 16px;
-  --radius-2xl: 20px;
-  --radius-full: 9999px;
-
   /* ─── Sidebar ─── */
   --sidebar-width: 220px;
 }
 
-/* ─── Reset & Base ─── */
+/* ─── Reset ─── */
 *, *::before, *::after {
   box-sizing: border-box;
   margin: 0;
@@ -73,62 +66,64 @@ html, body {
   color: var(--text-primary);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
 }
 
-a {
-  color: inherit;
-  text-decoration: none;
-}
-
-button {
-  font-family: var(--font-ui);
-  border: none;
-  cursor: pointer;
-  background: none;
-  color: inherit;
-}
-
-input, textarea {
-  font-family: var(--font-ui);
-  border: none;
-  outline: none;
-  background: none;
-  color: var(--text-primary);
-}
+a { color: inherit; text-decoration: none; }
+button { font-family: var(--font-ui); border: none; cursor: pointer; background: none; color: inherit; }
+input, textarea, select { font-family: var(--font-ui); border: none; outline: none; background: none; color: var(--text-primary); }
 
 /* ─── Scrollbar ─── */
-::-webkit-scrollbar {
-  width: 6px;
-}
-::-webkit-scrollbar-track {
-  background: transparent;
-}
-::-webkit-scrollbar-thumb {
-  background: var(--border-default);
-  border-radius: 3px;
-}
-::-webkit-scrollbar-thumb:hover {
-  background: var(--text-muted);
+::-webkit-scrollbar { width: 5px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.06); border-radius: 3px; }
+::-webkit-scrollbar-thumb:hover { background: rgba(255,255,255,0.12); }
+
+/* ─── Glass Utility ─── */
+.glass {
+  background: rgba(11, 11, 18, 0.7);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  border: 1px solid rgba(255, 255, 255, 0.04);
 }
 
-/* ─── Utility Classes ─── */
+.glass-hover:hover {
+  border-color: rgba(124, 92, 255, 0.12);
+  box-shadow: 0 0 30px rgba(124, 92, 255, 0.06), inset 0 1px 0 rgba(255,255,255,0.03);
+}
+
+/* ─── Plasma Text ─── */
 .gradient-text {
-  background: var(--gradient-primary);
+  background: var(--gradient-plasma);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
 }
 
-.glass {
-  background: rgba(17, 17, 24, 0.8);
-  backdrop-filter: blur(20px);
-  border: 1px solid var(--border-subtle);
-}
-
 /* ─── Animations ─── */
 @keyframes fadeIn {
-  from { opacity: 0; transform: translateY(8px); }
+  from { opacity: 0; transform: translateY(12px); }
   to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes breathe {
+  0%, 100% { opacity: 0.4; transform: scale(1); }
+  50% { opacity: 0.7; transform: scale(1.05); }
+}
+
+@keyframes energySpin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+@keyframes pulseGlow {
+  0%, 100% { box-shadow: 0 0 20px rgba(255, 46, 159, 0.15), 0 0 60px rgba(124, 92, 255, 0.06); }
+  50% { box-shadow: 0 0 40px rgba(255, 46, 159, 0.25), 0 0 80px rgba(124, 92, 255, 0.12); }
+}
+
+@keyframes shockwave {
+  0% { transform: scale(0.8); opacity: 0.8; }
+  100% { transform: scale(2.5); opacity: 0; }
 }
 
 @keyframes slideIn {
@@ -136,24 +131,6 @@ input, textarea {
   to { opacity: 1; transform: translateX(0); }
 }
 
-@keyframes pulse {
-  0%, 100% { opacity: 1; }
-  50% { opacity: 0.5; }
-}
-
-@keyframes shimmer {
-  0% { background-position: -200% 0; }
-  100% { background-position: 200% 0; }
-}
-
-.animate-fade-in {
-  animation: fadeIn 0.3s ease-out;
-}
-
-.animate-slide-in {
-  animation: slideIn 0.3s ease-out;
-}
-
-.animate-pulse {
-  animation: pulse 2s ease-in-out infinite;
-}
+.animate-fade-in { animation: fadeIn 0.4s ease-out; }
+.animate-breathe { animation: breathe 4s ease-in-out infinite; }
+.animate-pulse-glow { animation: pulseGlow 3s ease-in-out infinite; }

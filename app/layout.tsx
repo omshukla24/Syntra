@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import "./globals.css";
-import Sidebar from "@/components/Sidebar";
-import CursorGlow from "@/components/CursorGlow";
+import ClientShell from "@/components/ClientShell";
 
 export const metadata: Metadata = {
   title: "Syntra — From Thought to System",
@@ -17,19 +16,9 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body>
-        <div style={{ display: 'flex', minHeight: '100vh' }}>
-          <Sidebar />
-          <main style={{
-            flex: 1,
-            marginLeft: 'var(--sidebar-width)',
-            minHeight: '100vh',
-            transition: 'margin-left 0.2s ease',
-          }}>
-            <CursorGlow>
-              {children}
-            </CursorGlow>
-          </main>
-        </div>
+        <ClientShell>
+          {children}
+        </ClientShell>
       </body>
     </html>
   );

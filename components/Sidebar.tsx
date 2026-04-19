@@ -3,22 +3,23 @@
 import { useState } from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
+import { motion } from 'framer-motion';
 import styles from './Sidebar.module.css';
 
 const NAV_ITEMS = [
-  { href: '/', label: 'Dashboard', icon: 'dashboard' },
-  { href: '/tasks', label: 'Tasks', icon: 'tasks' },
-  { href: '/plan', label: 'Plan', icon: 'plan' },
-  { href: '/focus', label: 'Focus', icon: 'focus' },
-  { href: '/progress', label: 'Progress', icon: 'progress' },
-  { href: '/replan', label: 'Replan', icon: 'replan' },
-  { href: '/chat', label: 'AI Chat', icon: 'chat' },
-  { href: '/voice', label: 'Talk to AI', icon: 'voice' },
-  { href: '/settings', label: 'Settings', icon: 'settings' },
+  { href: '/', label: 'System State', icon: 'dashboard' },
+  { href: '/tasks', label: 'Nodes', icon: 'tasks' },
+  { href: '/plan', label: 'Matrix', icon: 'plan' },
+  { href: '/focus', label: 'Deep Work', icon: 'focus' },
+  { href: '/progress', label: 'Yield', icon: 'progress' },
+  { href: '/replan', label: 'Shift', icon: 'replan' },
+  { href: '/chat', label: 'Neural Link', icon: 'chat' },
+  { href: '/voice', label: 'Acoustic', icon: 'voice' },
+  { href: '/settings', label: 'Config', icon: 'settings' },
 ];
 
 function NavIcon({ icon, active }: { icon: string; active: boolean }) {
-  const color = active ? '#7C5CFF' : '#6E6E82';
+  const color = active ? '#fff' : '#6E6E82';
   switch (icon) {
     case 'dashboard':
       return <svg width="18" height="18" viewBox="0 0 18 18" fill="none"><rect x="1" y="1" width="6" height="6" rx="1.5" stroke={color} strokeWidth="1.3"/><rect x="11" y="1" width="6" height="3.5" rx="1.5" stroke={color} strokeWidth="1.3"/><rect x="1" y="11" width="6" height="6" rx="1.5" stroke={color} strokeWidth="1.3"/><rect x="11" y="7.5" width="6" height="9.5" rx="1.5" stroke={color} strokeWidth="1.3"/></svg>;
@@ -50,13 +51,17 @@ export default function Sidebar() {
   return (
     <nav className={`${styles.sidebar} ${collapsed ? styles.collapsed : ''}`}>
       <div className={styles.logo}>
-        <div className={styles.logoIcon}>
+        <motion.div 
+          className={styles.logoIcon}
+          animate={{ boxShadow: ['0 0 20px rgba(255,46,159,0.2)', '0 0 40px rgba(124,92,255,0.4)', '0 0 20px rgba(255,46,159,0.2)'] }}
+          transition={{ repeat: Infinity, duration: 4, ease: 'easeInOut' }}
+        >
           <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
             <path d="M10 1L18 6V14L10 19L2 14V6L10 1Z" stroke="#fff" strokeWidth="1.5" fill="none"/>
             <circle cx="10" cy="10" r="2.5" fill="#fff"/>
           </svg>
-        </div>
-        {!collapsed && <span className={styles.logoText}>Syntra</span>}
+        </motion.div>
+        {!collapsed && <span className={styles.logoText}>SYNTRA</span>}
       </div>
 
       <div className={styles.navList}>
@@ -66,10 +71,22 @@ export default function Sidebar() {
             <Link
               key={item.href}
               href={item.href}
-              className={`${styles.navItem} ${active ? styles.active : ''}`}
+              className={styles.navItemWrapper}
             >
-              <NavIcon icon={item.icon} active={active} />
-              {!collapsed && <span>{item.label}</span>}
+              <div className={`${styles.navItem} ${active ? styles.active : ''}`}>
+                {active && (
+                  <motion.div 
+                    layoutId="activeTabGlow"
+                    className={styles.activeGlow}
+                    initial={false}
+                    transition={{ type: "spring", stiffness: 300, damping: 30 }}
+                  />
+                )}
+                <div style={{ position: 'relative', zIndex: 2, display: 'flex', alignItems: 'center', gap: '10px' }}>
+                  <NavIcon icon={item.icon} active={active} />
+                  {!collapsed && <span>{item.label}</span>}
+                </div>
+              </div>
             </Link>
           );
         })}
