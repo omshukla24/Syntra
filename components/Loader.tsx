@@ -9,7 +9,7 @@ export default function Loader({ onComplete }: { onComplete: () => void }) {
   return (
     <motion.div
       className="fixed inset-0 z-[9999] flex flex-col items-center justify-center"
-      style={{ background: '#0A0908' }}
+      style={{ background: '#F4F7FB' }}
       initial={{ opacity: 1 }}
       animate={exiting ? { opacity: 0 } : { opacity: 1 }}
       transition={{ duration: 0.8, ease: 'easeInOut' }}
@@ -26,8 +26,8 @@ export default function Loader({ onComplete }: { onComplete: () => void }) {
             position: 'absolute',
             inset: 0,
             borderRadius: '50%',
-            background: 'conic-gradient(from 0deg, #E8A634, #C27B3A, #F5E6C8, transparent)',
-            opacity: 0.2,
+            background: 'conic-gradient(from 0deg, #00D0E6, #9F8DEB, #F9FAFC, transparent)',
+            opacity: 0.15,
             filter: 'blur(20px)',
           }}
         />
@@ -36,8 +36,8 @@ export default function Loader({ onComplete }: { onComplete: () => void }) {
         <motion.svg width="160" height="160" viewBox="0 0 160 160" style={{ position: 'absolute' }}>
           <defs>
             <linearGradient id="gradient" x1="0%" y1="0%" x2="100%" y2="100%">
-              <stop offset="0%" stopColor="#E8A634" />
-              <stop offset="100%" stopColor="#C27B3A" />
+              <stop offset="0%" stopColor="#00D0E6" />
+              <stop offset="100%" stopColor="#9F8DEB" />
             </linearGradient>
           </defs>
           <motion.circle
@@ -56,8 +56,8 @@ export default function Loader({ onComplete }: { onComplete: () => void }) {
         <motion.div
           style={{
             width: 60, height: 60, borderRadius: '50%',
-            background: '#F5E6C8',
-            boxShadow: '0 0 80px rgba(232, 166, 52, 0.4), 0 0 20px rgba(194, 123, 58, 0.8)',
+            background: '#FFFFFF',
+            boxShadow: '0 4px 20px rgba(0, 208, 230, 0.4), inset 0 0 10px rgba(159, 141, 235, 0.2)',
           }}
           initial={{ scale: 0 }}
           animate={{ scale: [0, 1.2, 1] }}
@@ -68,14 +68,14 @@ export default function Loader({ onComplete }: { onComplete: () => void }) {
       {/* Text */}
       <motion.p
         initial={{ opacity: 0, y: 10 }}
-        animate={{ opacity: 0.5, y: 0 }}
+        animate={{ opacity: 0.8, y: 0 }}
         transition={{ delay: 0.5, duration: 0.8 }}
         style={{
           marginTop: 60,
           fontFamily: "'JetBrains Mono', monospace",
           fontSize: 11,
           letterSpacing: '0.25em',
-          color: '#E8A634',
+          color: '#64748B',
           textTransform: 'uppercase',
         }}
       >
@@ -105,7 +105,7 @@ export default function Loader({ onComplete }: { onComplete: () => void }) {
             width: 3,
             height: 3,
             borderRadius: '50%',
-            background: i % 2 === 0 ? '#E8A634' : '#C27B3A',
+            background: i % 2 === 0 ? '#00D0E6' : '#9F8DEB',
           }}
         />
       ))}

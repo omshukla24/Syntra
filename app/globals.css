@@ -2,7 +2,7 @@
 
 /* ═══════════════════════════════════════════════════════════
    SYNTRA — Living System Design Tokens
-   Final Boss Mode — Obsidian Amber Aesthetic
+   Final Boss Mode — Glacial Chrome Aesthetic (Light Mode)
    ═══════════════════════════════════════════════════════════ */
 
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@300;400;500;600;700&family=Outfit:wght@400;500;600;700&display=swap');
@@ -11,52 +11,52 @@
   --font-display: 'Outfit', sans-serif;
   --font-mono: 'JetBrains Mono', monospace;
 
-  /* VOID AMBER TOKENS */
-  --bg-primary: #0A0908;
-  --bg-surface: #141210;
-  --bg-elevated: #1F1C18;
+  /* GLACIAL CHROME TOKENS */
+  --bg-primary: #F4F7FB;
+  --bg-surface: #F9FAFC;
+  --bg-elevated: #E2E8F0;
   
-  --text-primary: #F0EAE0;
-  --text-secondary: #D4CFC7;
-  --text-muted: #7A7060;
+  --text-primary: #1E293B;
+  --text-secondary: #475569;
+  --text-muted: #64748B;
 
-  --plasma-cyan: #E8A634; /* Amber */
-  --plasma-pink: #C27B3A; /* Copper */
-  --plasma-purple: #F5E6C8; /* Ivory */
+  --plasma-cyan: #00D0E6; /* Electric Cyan */
+  --plasma-pink: #9F8DEB; /* Soft Lilac */
+  --plasma-purple: #F9FAFC; /* Ice White */
   
-  --border-default: rgba(232, 166, 52, 0.15);
-  --border-subtle: rgba(232, 166, 52, 0.05);
+  --border-default: rgba(0, 208, 230, 0.2);
+  --border-subtle: rgba(0, 208, 230, 0.08);
 
-  --gradient-energy: linear-gradient(135deg, #E8A634, #C27B3A);
+  --gradient-energy: linear-gradient(135deg, #00D0E6, #9F8DEB);
 }
 
 :root {
-  /* ─── Void Palette ─── */
-  --bg-primary: #0A0908;
-  --bg-surface: #141210;
-  --bg-elevated: #1F1C18;
-  --bg-input: #0A0A10;
+  /* ─── Light Mode Palette ─── */
+  --bg-primary: #F4F7FB;
+  --bg-surface: #F9FAFC;
+  --bg-elevated: #E2E8F0;
+  --bg-input: #FFFFFF;
 
-  --border-subtle: rgba(232, 166, 52, 0.05);
-  --border-default: rgba(232, 166, 52, 0.15);
-  --border-accent: rgba(232, 166, 52, 0.3);
+  --border-subtle: rgba(15, 23, 42, 0.05);
+  --border-default: rgba(15, 23, 42, 0.1);
+  --border-accent: rgba(0, 208, 230, 0.3);
 
-  --text-primary: #F0EAE0;
-  --text-secondary: #D4CFC7;
-  --text-muted: #7A7060;
+  --text-primary: #1E293B;
+  --text-secondary: #475569;
+  --text-muted: #64748B;
 
-  /* ─── Plasma Palette (Aliased for minimal refactoring) ─── */
-  --plasma-pink: #C27B3A; /* Copper */
-  --plasma-purple: #F5E6C8; /* Ivory */
-  --plasma-cyan: #E8A634; /* Amber */
+  /* ─── Glacial Accents (Aliased for minimal refactoring) ─── */
+  --plasma-pink: #9F8DEB; /* Soft Lilac */
+  --plasma-purple: #F9FAFC; /* Ice White */
+  --plasma-cyan: #00D0E6; /* Electric Cyan */
   
-  --accent-green: #8FB573;
-  --accent-yellow: #E8A634;
-  --accent-red: #C44F3F;
+  --accent-green: #10B981;
+  --accent-yellow: #F59E0B;
+  --accent-red: #EF4444;
 
-  --gradient-plasma: linear-gradient(135deg, #E8A634, #C27B3A, #F5E6C8);
-  --gradient-energy: linear-gradient(135deg, #E8A634, #C27B3A);
-  --gradient-glass: linear-gradient(160deg, rgba(255,255,255,0.04), rgba(255,255,255,0.01));
+  --gradient-plasma: linear-gradient(135deg, #00D0E6, #9F8DEB, #F9FAFC);
+  --gradient-energy: linear-gradient(135deg, #00D0E6, #9F8DEB);
+  --gradient-glass: linear-gradient(160deg, rgba(255,255,255,0.8), rgba(255,255,255,0.4));
 
   /* ─── Typography ─── */
   --font-ui: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
@@ -91,20 +91,22 @@ input, textarea, select { font-family: var(--font-ui); border: none; outline: no
 /* ─── Scrollbar ─── */
 ::-webkit-scrollbar { width: 5px; }
 ::-webkit-scrollbar-track { background: transparent; }
-::-webkit-scrollbar-thumb { background: rgba(232, 166, 52, 0.15); border-radius: 3px; }
-::-webkit-scrollbar-thumb:hover { background: rgba(232, 166, 52, 0.3); }
+::-webkit-scrollbar-thumb { background: rgba(0, 0, 0, 0.1); border-radius: 3px; }
+::-webkit-scrollbar-thumb:hover { background: rgba(0, 0, 0, 0.2); }
 
 /* ─── Glass Utility ─── */
 .glass {
-  background: rgba(20, 18, 16, 0.7);
+  background: rgba(255, 255, 255, 0.7);
   backdrop-filter: blur(24px);
   -webkit-backdrop-filter: blur(24px);
-  border: 1px solid rgba(232, 166, 52, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.8);
+  box-shadow: 0 4px 24px rgba(15, 23, 42, 0.04);
 }
 
 .glass-hover:hover {
-  border-color: rgba(232, 166, 52, 0.25);
-  box-shadow: 0 0 30px rgba(232, 166, 52, 0.08), inset 0 1px 0 rgba(232, 166, 52, 0.05);
+  border-color: rgba(0, 208, 230, 0.4);
+  box-shadow: 0 10px 40px rgba(15, 23, 42, 0.08), 0 0 20px rgba(0, 208, 230, 0.15);
+  transform: translateY(-2px);
 }
 
 /* ─── Plasma Text ─── */
@@ -132,8 +134,8 @@ input, textarea, select { font-family: var(--font-ui); border: none; outline: no
 }
 
 @keyframes pulseGlow {
-  0%, 100% { box-shadow: 0 0 20px rgba(232, 166, 52, 0.15), 0 0 60px rgba(194, 123, 58, 0.06); }
-  50% { box-shadow: 0 0 40px rgba(232, 166, 52, 0.25), 0 0 80px rgba(194, 123, 58, 0.12); }
+  0%, 100% { box-shadow: 0 0 20px rgba(0, 208, 230, 0.2), 0 0 40px rgba(159, 141, 235, 0.1); }
+  50% { box-shadow: 0 0 40px rgba(0, 208, 230, 0.3), 0 0 60px rgba(159, 141, 235, 0.2); }
 }
 
 @keyframes shockwave {

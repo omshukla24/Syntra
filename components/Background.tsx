@@ -1,17 +1,18 @@
 'use client';
 
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, useState } from 'react';
+import { motion } from 'framer-motion';
 
 export default function Background() {
   const bgRef = useRef<HTMLDivElement>(null);
+  const [mousePos, setMousePos] = useState({ x: 0, y: 0 });
 
   useEffect(() => {
     const handleMove = (e: MouseEvent) => {
-      if (bgRef.current) {
-        const x = (e.clientX / window.innerWidth - 0.5) * 12;
-        const y = (e.clientY / window.innerHeight - 0.5) * 12;
-        bgRef.current.style.transform = `translate(${x}px, ${y}px)`;
-      }
+      setMousePos({
+        x: (e.clientX / window.innerWidth - 0.5) * 100,
+        y: (e.clientY / window.innerHeight - 0.5) * 100,
+      });
     };
     window.addEventListener('mousemove', handleMove);
     return () => window.removeEventListener('mousemove', handleMove);
@@ -26,7 +27,7 @@ export default function Background() {
         transition: 'transform 0.3s ease-out',
       }}
     >
-      {/* Amber plasma blob — top left */}
+      {/* Cyan plasma blob — top left */}
       <div
         style={{
           position: 'absolute',
@@ -35,13 +36,15 @@ export default function Background() {
           width: 600,
           height: 600,
           borderRadius: '50%',
-          background: 'radial-gradient(circle, rgba(232, 166, 52, 0.08) 0%, transparent 60%)',
+          background: 'radial-gradient(circle, rgba(0, 208, 230, 0.12) 0%, transparent 60%)',
           filter: 'blur(80px)',
         }}
         className="animate-breathe"
       />
-      {/* Copper structure blob — center */}
-      <div
+      {/* Lilac structure blob — center */}
+      <motion.div
+        animate={{ x: mousePos.x * -0.3, y: mousePos.y * 0.5 }}
+        transition={{ type: 'spring', stiffness: 40, damping: 25 }}
         style={{
           position: 'absolute',
           top: '30%',
@@ -49,11 +52,11 @@ export default function Background() {
           width: 500,
           height: 500,
           borderRadius: '50%',
-          background: 'radial-gradient(circle, rgba(194, 123, 58, 0.06) 0%, transparent 60%)',
+          background: 'radial-gradient(circle, rgba(159, 141, 235, 0.1) 0%, transparent 60%)',
           filter: 'blur(100px)',
         }}
       />
-      {/* Ivory highlight — bottom right */}
+      {/* Ice highlight — bottom right */}
       <div
         style={{
           position: 'absolute',
@@ -62,7 +65,7 @@ export default function Background() {
           width: 500,
           height: 500,
           borderRadius: '50%',
-          background: 'radial-gradient(circle, rgba(245, 230, 200, 0.04) 0%, transparent 60%)',
+          background: 'radial-gradient(circle, rgba(226, 232, 240, 0.4) 0%, transparent 60%)',
           filter: 'blur(80px)',
         }}
         className="animate-breathe"

@@ -56,13 +56,13 @@ export default function Dashboard() {
         </div>
         <Link href="/replan" className={styles.replanBtn}>
           <div className={styles.btnGlow} />
-          <svg width="14" height="14" viewBox="0 0 14 14" fill="none" style={{ position: 'relative', zIndex: 2 }}><path d="M1 7h2l2-4 3 8 2-4h3" stroke="#fff" strokeWidth="1.3" strokeLinecap="round" strokeLinejoin="round"/></svg>
+          <svg width="14" height="14" viewBox="0 0 14 14" fill="none" style={{ position: 'relative', zIndex: 2 }}><path d="M1 7h2l2-4 3 8 2-4h3" stroke="#1E293B" strokeWidth="1.3" strokeLinecap="round" strokeLinejoin="round"/></svg>
           <span style={{ position: 'relative', zIndex: 2 }}>Replan Reality</span>
         </Link>
       </motion.header>
 
       <motion.div className={styles.statsGrid} variants={itemVariants}>
-        <StatCard label="Total Nodes" value={stats.totalTasks} color="#fff" />
+        <StatCard label="Total Nodes" value={stats.totalTasks} color="#1E293B" />
         <StatCard label="Completed" value={stats.completedTasks} color="var(--plasma-cyan)" />
         <StatCard label="Deep Work" value={`${Math.round(stats.focusMinutesToday / 60 * 10) / 10}h`} color="var(--plasma-purple)" />
         <StatCard label="Critical" value={stats.urgentTasks} color="var(--plasma-pink)" />
@@ -81,7 +81,7 @@ export default function Dashboard() {
                   key={task.id} 
                   className={styles.taskItem}
                   variants={itemVariants}
-                  whileHover={{ x: 6, scale: 1.01, backgroundColor: 'rgba(255,255,255,0.03)' }}
+                  whileHover={{ x: 6, scale: 1.01, backgroundColor: 'rgba(15, 23, 42, 0.03)' }}
                   transition={{ type: 'spring', stiffness: 400, damping: 25 }}
                   layout
                 >
@@ -133,7 +133,7 @@ function StatCard({ label, value, color }: { label: string; value: string | numb
   return (
     <motion.div 
       className={styles.statCard}
-      whileHover={{ y: -6, rotateX: 6, rotateY: -6, boxShadow: `0 20px 40px -10px ${color}20, inset 0 1px 0 rgba(255,255,255,0.05)` }}
+      whileHover={{ y: -6, rotateX: 6, rotateY: -6, boxShadow: `0 20px 40px -10px ${color}20, inset 0 1px 0 rgba(15, 23, 42, 0.05)` }}
       transition={{ type: 'spring', stiffness: 300, damping: 20 }}
       style={{ perspective: 1000 }}
     >

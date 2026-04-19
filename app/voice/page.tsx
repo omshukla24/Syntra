@@ -117,7 +117,7 @@ export default function VoicePage() {
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.6, ease: "easeOut" }}
       >
-        <motion.div className={styles.badge} animate={isListening ? { boxShadow: '0 0 20px rgba(232, 166, 52,0.4)', borderColor: 'rgba(232, 166, 52,0.8)' } : {}}>
+        <motion.div className={styles.badge} animate={isListening ? { boxShadow: '0 0 20px rgba(0, 208, 230,0.4)', borderColor: 'rgba(0, 208, 230,0.8)' } : {}}>
           <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><rect x="5" y="1" width="4" height="7" rx="2" stroke="currentColor" strokeWidth="1.2"/><path d="M3 6a4 4 0 008 0M7 11v2" stroke="currentColor" strokeWidth="1.2" strokeLinecap="round"/></svg>
           {isListening ? 'Acoustic Link Active' : 'Establishing Acoustic Link'}
         </motion.div>
@@ -133,7 +133,7 @@ export default function VoicePage() {
           disabled={loading}
           whileHover={{ scale: 1.05 }}
           whileTap={{ scale: 0.95 }}
-          animate={isListening ? { boxShadow: '0 0 60px rgba(232, 166, 52,0.3)', borderColor: '#E8A634' } : {}}
+          animate={isListening ? { boxShadow: '0 0 60px rgba(0, 208, 230,0.3)', borderColor: '#00D0E6' } : {}}
         >
           {isListening && (
             <motion.div 
@@ -143,8 +143,8 @@ export default function VoicePage() {
             />
           )}
           <svg width="32" height="32" viewBox="0 0 32 32" fill="none" style={{ position: 'relative', zIndex: 2 }}>
-            <rect x="12" y="4" width="8" height="14" rx="4" stroke={isListening ? '#fff' : 'rgba(255,255,255,0.5)'} strokeWidth="1.8"/>
-            <path d="M8 14a8 8 0 0016 0M16 24v4" stroke={isListening ? '#fff' : 'rgba(255,255,255,0.5)'} strokeWidth="1.8" strokeLinecap="round"/>
+            <rect x="12" y="4" width="8" height="14" rx="4" stroke={isListening ? '#1E293B' : 'rgba(15, 23, 42, 0.3)'} strokeWidth="1.8"/>
+            <path d="M8 14a8 8 0 0016 0M16 24v4" stroke={isListening ? '#1E293B' : 'rgba(15, 23, 42, 0.3)'} strokeWidth="1.8" strokeLinecap="round"/>
           </svg>
         </motion.button>
 

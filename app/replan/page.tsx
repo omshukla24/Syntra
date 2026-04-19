@@ -34,7 +34,7 @@ export default function ReplanPage() {
     // Trigger visual pulse effect on body
     const glowField = document.createElement('div');
     glowField.className = 'fixed inset-0 pointer-events-none z-50';
-    glowField.style.background = 'radial-gradient(circle at center, rgba(194, 123, 58,0.3) 0%, transparent 70%)';
+    glowField.style.background = 'radial-gradient(circle at center, rgba(159, 141, 235,0.3) 0%, transparent 70%)';
     glowField.style.animation = 'shockwave 1.5s ease-out forwards';
     document.body.appendChild(glowField);
     setTimeout(() => glowField.remove(), 1500);
@@ -98,8 +98,8 @@ export default function ReplanPage() {
             animate="animate"
             exit="exit"
           >
-            <motion.div className={styles.logoIcon} variants={itemVariants} animate={loading ? { rotate: 360, boxShadow: '0 0 40px #C27B3A' } : {}} transition={loading ? { repeat: Infinity, duration: 2, ease: "linear" } : {}}>
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M12 2L20 7.5V16.5L12 22L4 16.5V7.5L12 2Z" stroke="#fff" strokeWidth="1.5" fill="none"/><circle cx="12" cy="12" r="3" fill="#fff"/></svg>
+            <motion.div className={styles.logoIcon} variants={itemVariants} animate={loading ? { rotate: 360, boxShadow: '0 0 40px #9F8DEB' } : {}} transition={loading ? { repeat: Infinity, duration: 2, ease: "linear" } : {}}>
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M12 2L20 7.5V16.5L12 22L4 16.5V7.5L12 2Z" stroke="#1E293B" strokeWidth="1.5" fill="none"/><circle cx="12" cy="12" r="3" fill="#1E293B"/></svg>
             </motion.div>
             <motion.h1 className={styles.heroTitle} variants={itemVariants}>Restructure Reality</motion.h1>
             <motion.p className={styles.heroSubtitle} variants={itemVariants}>Feed the system your thoughts. Syntra will align them.</motion.p>
@@ -130,13 +130,13 @@ export default function ReplanPage() {
                   className={styles.structureBtn} 
                   onClick={handleReplan} 
                   disabled={!input.trim() || loading}
-                  whileHover={{ scale: 1.05, boxShadow: '0 0 20px rgba(194, 123, 58,0.4)' }}
+                  whileHover={{ scale: 1.05, boxShadow: '0 0 20px rgba(159, 141, 235,0.4)' }}
                   whileTap={{ scale: 0.95 }}
                 >
                   {loading ? (
                     <span className={styles.spinner} />
                   ) : (
-                    <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M1 7h2l2-4 3 8 2-4h3" stroke="#fff" strokeWidth="1.3" strokeLinecap="round" strokeLinejoin="round"/></svg>
+                    <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M1 7h2l2-4 3 8 2-4h3" stroke="#1E293B" strokeWidth="1.3" strokeLinecap="round" strokeLinejoin="round"/></svg>
                   )}
                   {loading ? 'Processing...' : 'Structure This'}
                 </motion.button>
@@ -151,7 +151,7 @@ export default function ReplanPage() {
                     key={s} 
                     className={styles.sugBtn} 
                     onClick={() => setInput(s.replace(/"/g, ''))}
-                    whileHover={{ y: -2, backgroundColor: 'rgba(255,255,255,0.05)' }}
+                    whileHover={{ y: -2, backgroundColor: 'rgba(15, 23, 42, 0.05)' }}
                   >
                     {s}
                   </motion.button>
@@ -180,10 +180,10 @@ export default function ReplanPage() {
                 <motion.button 
                   className={styles.acceptBtn} 
                   onClick={handleAccept}
-                  whileHover={{ scale: 1.05, boxShadow: '0 0 30px rgba(232, 166, 52,0.3)' }}
+                  whileHover={{ scale: 1.05, boxShadow: '0 0 30px rgba(0, 208, 230,0.3)' }}
                   whileTap={{ scale: 0.95 }}
                 >
-                  <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M3 7.5l3 3 5-5" stroke="#fff" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/></svg>
+                  <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M3 7.5l3 3 5-5" stroke="#1E293B" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/></svg>
                   Commit Reality
                 </motion.button>
               ) : (
@@ -208,17 +208,17 @@ export default function ReplanPage() {
             <motion.div className={styles.insights} variants={itemVariants}>
               <div className={styles.insightItem}>
                 <span className={styles.insightLabel}>Efficiency Gain</span>
-                <span className={styles.insightValue} style={{ color: 'var(--plasma-cyan)', textShadow: '0 0 20px rgba(232, 166, 52,0.3)' }}>{result.insights?.productivityGain}</span>
+                <span className={styles.insightValue} style={{ color: 'var(--plasma-cyan)', textShadow: '0 0 20px rgba(0, 208, 230,0.3)' }}>{result.insights?.productivityGain}</span>
               </div>
               <div className={styles.insightDivider} />
               <div className={styles.insightItem}>
                 <span className={styles.insightLabel}>Deep Work Req.</span>
-                <span className={styles.insightValue} style={{ color: 'var(--plasma-purple)', textShadow: '0 0 20px rgba(245, 230, 200,0.3)' }}>{result.insights?.deepWorkHours}</span>
+                <span className={styles.insightValue} style={{ color: 'var(--plasma-purple)', textShadow: '0 0 20px rgba(249, 250, 252,0.3)' }}>{result.insights?.deepWorkHours}</span>
               </div>
               <div className={styles.insightDivider} />
               <div className={styles.insightItem}>
                 <span className={styles.insightLabel}>System Load (Risk)</span>
-                <span className={styles.insightValue} style={{ color: 'var(--plasma-pink)', textShadow: '0 0 20px rgba(194, 123, 58,0.3)' }}>{result.insights?.burnoutRisk}</span>
+                <span className={styles.insightValue} style={{ color: 'var(--plasma-pink)', textShadow: '0 0 20px rgba(159, 141, 235,0.3)' }}>{result.insights?.burnoutRisk}</span>
               </div>
             </motion.div>
 
@@ -232,7 +232,7 @@ export default function ReplanPage() {
                     initial={{ opacity: 0, y: 10 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ delay: 0.1 * i }}
-                    whileHover={{ scale: 1.02, backgroundColor: 'rgba(255,255,255,0.05)' }}
+                    whileHover={{ scale: 1.02, backgroundColor: 'rgba(15, 23, 42, 0.05)' }}
                   >
                     <span className={styles.taskTitle}>{t.title}</span>
                     <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginTop: '10px' }}>

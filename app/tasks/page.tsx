@@ -54,7 +54,7 @@ export default function TasksPage() {
           <p className={styles.subtitle}>{tasks.length} total • {tasks.filter(t => t.status === 'done').length} completed</p>
         </div>
         <button className={styles.addBtn} onClick={() => setShowNewTask(!showNewTask)}>
-          <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M7 1v12M1 7h12" stroke="#fff" strokeWidth="1.5" strokeLinecap="round"/></svg>
+          <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M7 1v12M1 7h12" stroke="#1E293B" strokeWidth="1.5" strokeLinecap="round"/></svg>
           New Task
         </button>
       </header>
@@ -94,7 +94,7 @@ export default function TasksPage() {
                 onClick={() => handleToggleStatus(task.id, task.status)}
               >
                 {task.status === 'done' && (
-                  <svg width="10" height="10" viewBox="0 0 10 10" fill="none"><path d="M2 5l2 2 4-4" stroke="#fff" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/></svg>
+                  <svg width="10" height="10" viewBox="0 0 10 10" fill="none"><path d="M2 5l2 2 4-4" stroke="#1E293B" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/></svg>
                 )}
               </button>
             </span>

@@ -42,7 +42,7 @@ export default function SettingsPage() {
       <div className={styles.section}>
         <div className={styles.sectionHeader}>
           <div className={styles.sectionIcon}>
-            <svg width="18" height="18" viewBox="0 0 18 18" fill="none"><path d="M13 6a3 3 0 00-6 0v2H5v8h8V8h-2V6zm-2 0v2H9V6a1 1 0 012 0z" fill="rgba(245, 230, 200,0.6)"/></svg>
+            <svg width="18" height="18" viewBox="0 0 18 18" fill="none"><path d="M13 6a3 3 0 00-6 0v2H5v8h8V8h-2V6zm-2 0v2H9V6a1 1 0 012 0z" fill="rgba(249, 250, 252,0.6)"/></svg>
           </div>
           <div>
             <h2 className={styles.sectionTitle}>Gemini API Key</h2>
@@ -102,7 +102,7 @@ export default function SettingsPage() {
       <div className={styles.section}>
         <div className={styles.sectionHeader}>
           <div className={styles.sectionIcon}>
-            <svg width="18" height="18" viewBox="0 0 18 18" fill="none"><path d="M9 1L16 5.5V12.5L9 17L2 12.5V5.5L9 1Z" stroke="rgba(245, 230, 200,0.6)" strokeWidth="1.3" fill="none"/><circle cx="9" cy="9" r="2" fill="rgba(245, 230, 200,0.6)"/></svg>
+            <svg width="18" height="18" viewBox="0 0 18 18" fill="none"><path d="M9 1L16 5.5V12.5L9 17L2 12.5V5.5L9 1Z" stroke="rgba(249, 250, 252,0.6)" strokeWidth="1.3" fill="none"/><circle cx="9" cy="9" r="2" fill="rgba(249, 250, 252,0.6)"/></svg>
           </div>
           <div>
             <h2 className={styles.sectionTitle}>About Syntra</h2>

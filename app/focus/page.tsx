@@ -61,7 +61,7 @@ export default function FocusPage() {
         animate={{ opacity: 1, scale: 1 }}
         transition={{ duration: 0.5, ease: 'easeOut' }}
       >
-        <motion.div className={styles.badge} animate={isRunning ? { boxShadow: '0 0 20px rgba(194, 123, 58,0.3)', borderColor: 'rgba(194, 123, 58,0.5)', color: 'var(--plasma-pink)' } : {}}>
+        <motion.div className={styles.badge} animate={isRunning ? { boxShadow: '0 0 20px rgba(159, 141, 235,0.3)', borderColor: 'rgba(159, 141, 235,0.5)', color: 'var(--plasma-pink)' } : {}}>
           <div className={styles.badgeDot} style={{ backgroundColor: isRunning ? 'var(--plasma-pink)' : 'var(--plasma-cyan)' }} />
           <span>{isRunning ? 'Temporal Lock Active' : 'System Ready'}</span>
         </motion.div>
@@ -71,7 +71,7 @@ export default function FocusPage() {
           <p className={styles.subtitle}>Isolate. Execute. Prevail.</p>
         </div>
 
-        <motion.div className={styles.timerCard} animate={isRunning ? { boxShadow: '0 0 80px rgba(245, 230, 200,0.08), inset 0 0 40px rgba(245, 230, 200,0.03)' } : {}}>
+        <motion.div className={styles.timerCard} animate={isRunning ? { boxShadow: '0 0 80px rgba(249, 250, 252,0.08), inset 0 0 40px rgba(249, 250, 252,0.03)' } : {}}>
           {isRunning && (
             <motion.div 
               className={styles.timerGlow}
@@ -89,7 +89,7 @@ export default function FocusPage() {
                   animate={{ opacity: 1, y: 0 }}
                   exit={{ opacity: 0, y: -20 }}
                   transition={{ duration: 0.2 }}
-                  style={{ display: 'inline-block', width: char === ':' ? '20px' : '48px', textAlign: 'center', color: isRunning ? '#fff' : 'var(--text-primary)' }}
+                  style={{ display: 'inline-block', width: char === ':' ? '20px' : '48px', textAlign: 'center', color: isRunning ? '#1E293B' : 'var(--text-primary)' }}
                 >
                   {char}
                 </motion.span>
@@ -118,19 +118,19 @@ export default function FocusPage() {
             <motion.button 
               className={styles.controlBtn} 
               onClick={() => setIsRunning(!isRunning)}
-              whileHover={{ scale: 1.1, backgroundColor: 'rgba(255,255,255,0.1)' }}
+              whileHover={{ scale: 1.1, backgroundColor: 'rgba(15, 23, 42, 0.1)' }}
               whileTap={{ scale: 0.95 }}
             >
               {isRunning ? (
-                <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><rect x="5" y="4" width="3" height="12" rx="1" fill="#fff"/><rect x="12" y="4" width="3" height="12" rx="1" fill="#fff"/></svg>
+                <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><rect x="5" y="4" width="3" height="12" rx="1" fill="#1E293B"/><rect x="12" y="4" width="3" height="12" rx="1" fill="#1E293B"/></svg>
               ) : (
-                <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M6 4l10 6-10 6V4z" fill="#fff"/></svg>
+                <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M6 4l10 6-10 6V4z" fill="#1E293B"/></svg>
               )}
             </motion.button>
             <motion.button 
               className={styles.controlBtn} 
               onClick={() => { setSeconds(0); setIsRunning(false); }}
-              whileHover={{ scale: 1.1, backgroundColor: 'rgba(255,255,255,0.1)' }}
+              whileHover={{ scale: 1.1, backgroundColor: 'rgba(15, 23, 42, 0.1)' }}
               whileTap={{ scale: 0.95 }}
             >
               <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><rect x="4" y="4" width="12" height="12" rx="2" fill="var(--text-secondary)"/></svg>
@@ -139,10 +139,10 @@ export default function FocusPage() {
               className={styles.completeBtn} 
               onClick={handleComplete} 
               disabled={!selectedTask}
-              whileHover={selectedTask ? { scale: 1.05, boxShadow: '0 0 20px rgba(232, 166, 52,0.3)' } : {}}
+              whileHover={selectedTask ? { scale: 1.05, boxShadow: '0 0 20px rgba(0, 208, 230,0.3)' } : {}}
               whileTap={selectedTask ? { scale: 0.95 } : {}}
             >
-              <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M3 7.5l3 3 5-5" stroke="#fff" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/></svg>
+              <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M3 7.5l3 3 5-5" stroke="#1E293B" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/></svg>
               Finalize Node
             </motion.button>
           </div>
@@ -174,7 +174,7 @@ export default function FocusPage() {
           </div>
           <div className={styles.quickDivider} />
           <div className={styles.quickStat}>
-            <span className={styles.quickValue} style={{ color: 'var(--plasma-cyan)', textShadow: '0 0 20px rgba(232, 166, 52,0.4)' }}>{formatTime(seconds).slice(0, 5)}</span>
+            <span className={styles.quickValue} style={{ color: 'var(--plasma-cyan)', textShadow: '0 0 20px rgba(0, 208, 230,0.4)' }}>{formatTime(seconds).slice(0, 5)}</span>
             <span className={styles.quickLabel}>Session Yield</span>
           </div>
         </div>

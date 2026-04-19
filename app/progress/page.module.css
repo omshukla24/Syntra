@@ -21,7 +21,7 @@
 .streakDot { width:24px; height:24px; border-radius:4px; }
 
 .miniChart { display:flex; align-items:flex-end; gap:6px; height:48px; }
-.miniBar { width:20px; border-radius:3px; background:linear-gradient(180deg,#E8A634,rgba(232, 166, 52,0.4)); }
+.miniBar { width:20px; border-radius:3px; background:linear-gradient(180deg,#00D0E6,rgba(0, 208, 230,0.4)); }
 
 .categoryList { display:flex; flex-direction:column; gap:12px; }
 .categoryRow { display:flex; align-items:center; gap:12px; }

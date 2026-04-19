@@ -13,19 +13,19 @@ export default function CursorGlow() {
       target.current = { x: e.clientX, y: e.clientY };
     };
 
-    const animate = () => {
-      pos.current.x += (target.current.x - pos.current.x) * 0.08;
-      pos.current.y += (target.current.y - pos.current.y) * 0.08;
+    const update = () => {
+      pos.current.x += (target.current.x - pos.current.x) * 0.15;
+      pos.current.y += (target.current.y - pos.current.y) * 0.15;
 
       if (glowRef.current) {
-        glowRef.current.style.left = `${pos.current.x - 150}px`;
-        glowRef.current.style.top = `${pos.current.y - 150}px`;
+        glowRef.current.style.transform = `translate3d(${pos.current.x - 150}px, ${pos.current.y - 150}px, 0)`;
       }
-      raf.current = requestAnimationFrame(animate);
+
+      raf.current = requestAnimationFrame(update);
     };
 
     window.addEventListener('mousemove', handleMove);
-    raf.current = requestAnimationFrame(animate);
+    raf.current = requestAnimationFrame(update);
 
     return () => {
       window.removeEventListener('mousemove', handleMove);
@@ -36,14 +36,17 @@ export default function CursorGlow() {
   return (
     <div
       ref={glowRef}
-      className="fixed pointer-events-none"
       style={{
+        position: 'fixed',
+        left: 0,
+        top: 0,
+        pointerEvents: 'none',
         zIndex: 1,
         width: 300,
         height: 300,
-        background: 'radial-gradient(600px circle at 50% 50%, rgba(232, 166, 52, 0.12), rgba(194, 123, 58, 0.04), transparent 80%)',
-        filter: 'blur(40px)',
-        willChange: 'left, top',
+        background: 'radial-gradient(600px circle at 50% 50%, rgba(0, 208, 230, 0.08), rgba(159, 141, 235, 0.04), transparent 80%)',
+        filter: 'blur(30px)',
+        willChange: 'transform',
       }}
     />
   );
