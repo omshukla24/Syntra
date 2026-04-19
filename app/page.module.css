@@ -27,7 +27,7 @@
 .title {
   font-size: 32px;
   font-weight: 400;
-  color: #1E293B;
+  color: var(--text-primary);
   letter-spacing: -0.03em;
   font-family: var(--font-display);
 }
@@ -61,10 +61,12 @@
   gap: 10px;
   padding: 12px 24px;
   border-radius: 12px;
-  background: rgba(255, 255, 255, 0.8); border: 1px solid rgba(0, 208, 230, 0.3); box-shadow: 0 4px 12px rgba(0, 208, 230, 0.1);
+  background: var(--bg-elevated);
+  border: 1px solid var(--border-accent);
+  box-shadow: 0 4px 12px rgba(0, 208, 230, 0.1);
   font-size: 13px;
   font-weight: 500;
-  color: #1E293B;
+  color: var(--text-primary);
   text-decoration: none;
   overflow: hidden;
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
@@ -83,7 +85,7 @@
 }
 
 .replanBtn:hover {
-  border-color: rgba(159, 141, 235, 0.8);
+  border-color: var(--plasma-purple);
   box-shadow: 0 0 30px rgba(159, 141, 235, 0.3);
   transform: scale(1.05);
 }
@@ -107,16 +109,17 @@
   flex: 1;
   padding: 24px;
   border-radius: 20px;
-  background: rgba(11, 11, 18, 0.3);
+  background: var(--glass-bg);
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
-  border: 1px solid rgba(15, 23, 42, 0.04);
+  border: 1px solid var(--glass-border);
   display: flex;
   flex-direction: column;
   gap: 12px;
   position: relative;
   overflow: hidden;
   transform-style: preserve-3d;
+  box-shadow: var(--glass-shadow);
 }
 
 .statCard::before {
@@ -126,7 +129,7 @@
   left: 0;
   right: 0;
   height: 1px;
-  background: linear-gradient(90deg, transparent, rgba(15, 23, 42, 0.1), transparent);
+  background: linear-gradient(90deg, transparent, var(--border-default), transparent);
 }
 
 .statLabel {
@@ -141,6 +144,7 @@
   font-size: 42px;
   font-weight: 300;
   letter-spacing: -0.04em;
+  color: var(--text-primary);
   font-family: var(--font-display);
 }
 
@@ -154,10 +158,11 @@
   flex: 1.8;
   padding: 28px;
   border-radius: 20px;
-  background: rgba(15, 23, 42, 0.3);
+  background: var(--glass-bg);
   backdrop-filter: blur(24px);
   -webkit-backdrop-filter: blur(24px);
-  border: 1px solid rgba(15, 23, 42, 0.04);
+  border: 1px solid var(--glass-border);
+  box-shadow: var(--glass-shadow);
 }
 
 .rightPanel {
@@ -177,7 +182,7 @@
 .sectionTitle {
   font-size: 16px;
   font-weight: 500;
-  color: #1E293B;
+  color: var(--text-primary);
   letter-spacing: -0.01em;
 }
 
@@ -207,8 +212,8 @@
   gap: 16px;
   padding: 16px 20px;
   border-radius: 14px;
-  background: rgba(0, 0, 0, 0.3);
-  border: 1px solid rgba(15, 23, 42, 0.02);
+  background: var(--bg-input);
+  border: 1px solid var(--border-subtle);
   cursor: default;
 }
 
@@ -228,7 +233,7 @@
 
 .taskTitle {
   font-size: 14px;
-  color: #1E293B;
+  color: var(--text-primary);
 }
 
 .taskMeta {
@@ -245,7 +250,8 @@
   font-family: var(--font-mono);
   padding: 4px 10px;
   border-radius: 6px;
-  background: rgba(15, 23, 42, 0.04);
+  background: var(--bg-surface);
+  color: var(--text-secondary);
 }
 
 /* ─── Replan Mega Card ─── */
@@ -254,10 +260,11 @@
   position: relative;
   padding: 32px;
   border-radius: 20px;
-  background: rgba(15, 23, 42, 0.3);
+  background: var(--glass-bg);
   backdrop-filter: blur(24px);
   -webkit-backdrop-filter: blur(24px);
-  border: 1px solid rgba(249, 250, 252, 0.2);
+  border: 1px solid var(--glass-border);
+  box-shadow: var(--glass-shadow);
   overflow: hidden;
   text-decoration: none;
   display: flex;
@@ -267,8 +274,8 @@
 }
 
 .replanCard:hover {
-  box-shadow: 0 0 60px rgba(249, 250, 252, 0.15), inset 0 0 40px rgba(249, 250, 252, 0.05);
-  border-color: rgba(249, 250, 252, 0.5);
+  box-shadow: 0 0 60px rgba(159, 141, 235, 0.15), inset 0 0 40px rgba(159, 141, 235, 0.05);
+  border-color: var(--plasma-purple);
   transform: translateY(-4px);
 }
 
@@ -279,7 +286,7 @@
   width: 200px;
   height: 200px;
   border-radius: 50%;
-  background: radial-gradient(circle, rgba(249, 250, 252, 0.25), transparent 70%);
+  background: radial-gradient(circle, var(--glass-hover-bg), transparent 70%);
   pointer-events: none;
   transition: all 0.3s ease;
 }
@@ -292,7 +299,7 @@
 .replanTitle {
   font-size: 24px;
   font-weight: 400;
-  color: #1E293B;
+  color: var(--text-primary);
   font-family: var(--font-display);
   position: relative;
   z-index: 2;
@@ -328,9 +335,9 @@
   flex: 1;
   padding: 20px;
   border-radius: 16px;
-  background: rgba(11, 11, 18, 0.3);
+  background: var(--glass-bg);
   backdrop-filter: blur(16px);
-  border: 1px solid rgba(15, 23, 42, 0.03);
+  border: 1px solid var(--glass-border);
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -341,7 +348,7 @@
 .quickValue {
   font-size: 22px;
   font-weight: 400;
-  color: #1E293B;
+  color: var(--text-primary);
   font-family: var(--font-display);
 }
 

@@ -1,4 +1,4 @@
-.container { padding: 32px 40px; min-height: 100vh; animation: fadeIn 0.3s ease; }
+.container { padding: 32px 40px; min-height: 100vh; position: relative; z-index: 10; animation: fadeIn 0.3s ease; }
 .loading { display:flex;align-items:center;justify-content:center;height:60vh;font-size:16px;color:var(--text-muted); }
 .header { display:flex;align-items:center;justify-content:space-between;margin-bottom:28px; }
 .title { font-size:24px;font-weight:600;color:var(--text-primary);letter-spacing:-0.01em; }
@@ -6,19 +6,20 @@
 
 .weekGrid { display:flex;gap:12px;flex:1;min-height:600px; }
 .dayColumn { display:flex;flex-direction:column;gap:8px;flex:1; }
-.dayHeader { display:flex;flex-direction:column;align-items:center;padding:12px;border-radius:var(--radius-md);
-  background: rgba(255, 255, 255, 0.85);
+.dayHeader { display:flex;flex-direction:column;align-items:center;padding:12px;
+  background: var(--glass-bg);
   backdrop-filter: blur(24px);
   -webkit-backdrop-filter: blur(24px);
-  border: 1px solid rgba(255, 255, 255, 0.9);
-  box-shadow: 0 8px 30px rgba(15, 23, 42, 0.04), inset 0 1px 2px rgba(255, 255, 255, 0.6);  border-radius: 20px;gap:2px; }
-.todayHeader { background:linear-gradient(135deg,rgba(249, 250, 252,0.2),rgba(0, 208, 230,0.15));border-color:rgba(249, 250, 252,0.3); }
+  border: 1px solid var(--glass-border);
+  box-shadow: var(--glass-shadow);
+  border-radius: 20px;gap:2px; }
+.todayHeader { background: var(--bg-elevated); border-color: var(--border-accent); }
 .dayLabel { font-size:11px;font-weight:500;color:var(--text-muted);text-transform:uppercase; }
 .dayNum { font-size:20px;font-weight:600;color:var(--text-primary); }
-.todayBadge { font-size:9px;font-weight:600;color:var(--accent-purple);text-transform:uppercase;letter-spacing:0.1em; }
+.todayBadge { font-size:9px;font-weight:600;color:var(--plasma-purple);text-transform:uppercase;letter-spacing:0.1em; }
 
 .blocks { display:flex;flex-direction:column;gap:6px;flex:1; }
-.block { padding:10px;border-radius:var(--radius-md);border-left:3px solid;transition:transform 0.1s ease; }
+.block { padding:10px;border-radius:8px;border-left:3px solid;transition:transform 0.1s ease;background:var(--bg-surface); }
 .block:hover { transform:translateX(2px); }
 .blockTitle { font-size:12px;font-weight:500;color:var(--text-primary);display:block; }
 .blockTime { font-size:10px;color:var(--text-muted);display:block;margin-top:2px; }

@@ -2,7 +2,12 @@
 
 import { useEffect, useRef } from 'react';
 
-export default function CursorGlow() {
+const GLOW_COLORS = {
+  dark: 'radial-gradient(circle, rgba(255,46,159,0.12) 0%, rgba(124,92,255,0.04) 40%, transparent 70%)',
+  light: 'radial-gradient(circle, rgba(106,75,224,0.08) 0%, rgba(0,177,204,0.03) 40%, transparent 70%)',
+};
+
+export default function CursorGlow({ theme }: { theme: string }) {
   const glowRef = useRef<HTMLDivElement>(null);
   const pos = useRef({ x: 0, y: 0 });
   const target = useRef({ x: 0, y: 0 });
@@ -13,19 +18,19 @@ export default function CursorGlow() {
       target.current = { x: e.clientX, y: e.clientY };
     };
 
-    const update = () => {
-      pos.current.x += (target.current.x - pos.current.x) * 0.15;
-      pos.current.y += (target.current.y - pos.current.y) * 0.15;
+    const animate = () => {
+      pos.current.x += (target.current.x - pos.current.x) * 0.08;
+      pos.current.y += (target.current.y - pos.current.y) * 0.08;
 
       if (glowRef.current) {
-        glowRef.current.style.transform = `translate3d(${pos.current.x - 150}px, ${pos.current.y - 150}px, 0)`;
+        glowRef.current.style.left = `${pos.current.x - 150}px`;
+        glowRef.current.style.top = `${pos.current.y - 150}px`;
       }
-
-      raf.current = requestAnimationFrame(update);
+      raf.current = requestAnimationFrame(animate);
     };
 
     window.addEventListener('mousemove', handleMove);
-    raf.current = requestAnimationFrame(update);
+    raf.current = requestAnimationFrame(animate);
 
     return () => {
       window.removeEventListener('mousemove', handleMove);
@@ -36,17 +41,15 @@ export default function CursorGlow() {
   return (
     <div
       ref={glowRef}
+      className="fixed pointer-events-none"
       style={{
-        position: 'fixed',
-        left: 0,
-        top: 0,
-        pointerEvents: 'none',
         zIndex: 1,
         width: 300,
         height: 300,
-        background: 'radial-gradient(600px circle at 50% 50%, rgba(0, 208, 230, 0.08), rgba(159, 141, 235, 0.04), transparent 80%)',
-        filter: 'blur(30px)',
-        willChange: 'transform',
+        background: theme === 'light' ? GLOW_COLORS.light : GLOW_COLORS.dark,
+        filter: 'blur(40px)',
+        willChange: 'left, top',
+        transition: 'background 0.5s ease',
       }}
     />
   );
