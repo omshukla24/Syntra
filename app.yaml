@@ -4,7 +4,6 @@ instance_class: F2
 
 env_variables:
   NODE_ENV: "production"
-  PORT: "8080"
   GEMINI_API_KEY: "REDACTED_GCP_API_KEY"
 
 handlers:
@@ -16,5 +15,3 @@ automatic_scaling:
   min_instances: 0
   max_instances: 3
   target_cpu_utilization: 0.65
-
-entrypoint: node .next/standalone/server.js

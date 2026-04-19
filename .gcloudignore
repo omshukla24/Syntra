@@ -1,38 +1,18 @@
-# Dependencies
+# Dependencies — App Engine will npm install
 node_modules/
 
-# Build cache
-.next/cache/
+# Build output — App Engine will create its own
+.next/
 
-# Source files (not needed in production — standalone output is used)
-app/
-components/
-lib/
-public/
-
-# Dev config
-.env.local
-.env*.local
-*.ts
-*.tsx
-*.mjs
-tsconfig.json
-eslint.config.mjs
-next.config.ts
-next-env.d.ts
-
-# IDE / OS
+# Dev & IDE files
 .git
 .gitignore
 .vscode
 .DS_Store
+.env.local
+.env*.local
+
+# Documentation
 AGENTS.md
 CLAUDE.md
 README.md
-
-# Keep these
-!.next/
-!.next/standalone/
-!.next/static/
-!package.json
-!app.yaml
