@@ -118,7 +118,7 @@ export default function FocusPage() {
             <motion.button 
               className={styles.controlBtn} 
               onClick={() => setIsRunning(!isRunning)}
-              whileHover={{ scale: 1.1, backgroundColor: 'rgba(15, 23, 42, 0.1)' }}
+              whileHover={{ scale: 1.1, backgroundColor: 'rgba(15, 23, 42, 0.06)' }}
               whileTap={{ scale: 0.95 }}
             >
               {isRunning ? (
@@ -130,7 +130,7 @@ export default function FocusPage() {
             <motion.button 
               className={styles.controlBtn} 
               onClick={() => { setSeconds(0); setIsRunning(false); }}
-              whileHover={{ scale: 1.1, backgroundColor: 'rgba(15, 23, 42, 0.1)' }}
+              whileHover={{ scale: 1.1, backgroundColor: 'rgba(15, 23, 42, 0.06)' }}
               whileTap={{ scale: 0.95 }}
             >
               <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><rect x="4" y="4" width="12" height="12" rx="2" fill="var(--text-secondary)"/></svg>

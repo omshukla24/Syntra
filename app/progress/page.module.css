@@ -6,7 +6,12 @@
 
 .topCards { display:flex; gap:16px; margin-bottom:16px; }
 .bottomCards { display:flex; gap:16px; }
-.card { flex:1; padding:24px; border-radius:var(--radius-lg); background-color:var(--bg-surface); border:1px solid var(--border-subtle); display:flex; flex-direction:column; gap:16px; }
+.card { flex:1; padding:24px; border-radius:var(--radius-lg); 
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  border: 1px solid rgba(255, 255, 255, 0.9);
+  box-shadow: 0 8px 30px rgba(15, 23, 42, 0.04), inset 0 1px 2px rgba(255, 255, 255, 0.6);  border-radius: 20px; display:flex; flex-direction:column; gap:16px; }
 
 .cardLabel { font-size:13px; font-weight:500; color:var(--text-muted); }
 .cardTitle { font-size:14px; font-weight:600; color:var(--text-primary); }

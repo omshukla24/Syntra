@@ -3,9 +3,14 @@
 .title { font-family: var(--font-display); font-size: 28px; font-weight: 600; color: var(--text-primary); letter-spacing: -0.02em; }
 .subtitle { font-size: 14px; color: var(--text-muted); margin-top: 4px; margin-bottom: 32px; }
 
-.section { margin-bottom: 32px; padding: 24px; border-radius: 16px; background: linear-gradient(160deg, rgba(14, 14, 22, 0.7), rgba(10, 10, 16, 0.9)); border: 1px solid rgba(15, 23, 42, 0.03); }
+.section { margin-bottom: 32px; padding: 24px; border-radius: 16px; 
+  background: rgba(255, 255, 255, 0.7);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.9);
+  box-shadow: 0 10px 40px rgba(15, 23, 42, 0.06), inset 0 2px 4px rgba(255, 255, 255, 0.5); }
 .sectionHeader { display: flex; align-items: center; gap: 14px; margin-bottom: 20px; }
-.sectionIcon { width: 36px; height: 36px; border-radius: 10px; background: rgba(249, 250, 252, 0.08); display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+.sectionIcon { width: 36px; height: 36px; border-radius: 10px; background: rgba(0, 208, 230, 0.1); display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
 .sectionTitle { font-size: 16px; font-weight: 600; color: var(--text-primary); }
 .sectionDesc { font-size: 12px; color: var(--text-muted); margin-top: 2px; }
 
@@ -13,7 +18,12 @@
 .safetyBanner strong { color: rgba(74, 222, 128, 0.7); }
 .safetyBanner svg { flex-shrink: 0; margin-top: 2px; }
 
-.existingKeyCard { padding: 16px; border-radius: 12px; background: rgba(249, 250, 252, 0.04); border: 1px solid rgba(249, 250, 252, 0.08); }
+.existingKeyCard { padding: 16px; border-radius: 12px; 
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  border: 1px solid rgba(255, 255, 255, 0.9);
+  box-shadow: 0 8px 30px rgba(15, 23, 42, 0.04), inset 0 1px 2px rgba(255, 255, 255, 0.6); }
 .keyStatus { display: flex; align-items: center; gap: 8px; font-size: 13px; font-weight: 600; color: rgba(74, 222, 128, 0.7); margin-bottom: 10px; }
 .statusDot { width: 6px; height: 6px; border-radius: 50%; background: rgba(74, 222, 128, 0.7); box-shadow: 0 0 8px rgba(74, 222, 128, 0.4); }
 .keyDisplay { display: flex; align-items: center; justify-content: space-between; }
@@ -24,7 +34,12 @@
 .inputGroup { display: flex; flex-direction: column; gap: 10px; }
 .label { font-size: 12px; font-weight: 600; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.06em; }
 .inputRow { display: flex; gap: 10px; }
-.input { flex: 1; padding: 12px 16px; border-radius: 10px; background: rgba(255, 255, 255, 0.8); border: 1px solid rgba(15, 23, 42, 0.04); font-size: 14px; color: var(--text-primary); }
+.input { flex: 1; padding: 12px 16px; border-radius: 10px; 
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  border: 1px solid rgba(255, 255, 255, 0.9);
+  box-shadow: 0 8px 30px rgba(15, 23, 42, 0.04), inset 0 1px 2px rgba(255, 255, 255, 0.6); font-size: 14px; color: var(--text-primary); }
 .input:focus { border-color: rgba(249, 250, 252, 0.3); outline: none; }
 .input::placeholder { color: var(--text-muted); }
 .saveBtn { padding: 12px 24px; border-radius: 10px; background: linear-gradient(135deg, rgba(249, 250, 252, 0.25), rgba(77, 166, 255, 0.12)); border: 1px solid rgba(249, 250, 252, 0.12); font-size: 13px; font-weight: 600; color: rgba(255, 255, 255, 0.85); transition: all 0.2s ease; }

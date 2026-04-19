@@ -134,7 +134,7 @@
   align-self: flex-start;
   max-width: 80%; 
   border-bottom-left-radius: 4px;
-  box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+  box-shadow: 0 10px 30px rgba(15, 23, 42, 0.03);
 }
 .msgRole { 
   font-size: 10px; 

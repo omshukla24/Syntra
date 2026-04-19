@@ -36,12 +36,17 @@
 
 .emptyState { padding: 48px; text-align: center; color: var(--text-muted); font-size: 14px; }
 
-.newTaskForm { display: flex; flex-direction: column; gap: 8px; padding: 16px; border-radius: var(--radius-lg); background-color: var(--bg-surface); border: 1px solid var(--border-accent); margin-bottom: 16px; animation: fadeIn 0.2s ease; }
-.input { width: 100%; padding: 10px 14px; border-radius: var(--radius-md); background-color: var(--bg-input); border: 1px solid var(--border-default); font-size: 14px; color: var(--text-primary); }
+.newTaskForm { display: flex; flex-direction: column; gap: 8px; padding: 16px; border-radius: 20px; 
+  background: rgba(255, 255, 255, 0.7);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.9);
+  box-shadow: 0 10px 40px rgba(15, 23, 42, 0.06), inset 0 2px 4px rgba(255, 255, 255, 0.5); margin-bottom: 16px; animation: fadeIn 0.2s ease; }
+.input { width: 100%; padding: 10px 14px; border-radius: var(--radius-md); background-color: rgba(255, 255, 255, 0.9); box-shadow: inset 0 2px 4px rgba(15, 23, 42, 0.05); border: 1px solid var(--border-default); font-size: 14px; color: var(--text-primary); }
 .input:focus { border-color: var(--accent-purple); }
 .input::placeholder { color: var(--text-muted); }
 .formRow { display: flex; gap: 8px; align-items: center; }
-.select { padding: 8px 12px; border-radius: var(--radius-md); background-color: var(--bg-input); border: 1px solid var(--border-default); font-size: 13px; color: var(--text-primary); font-family: var(--font-ui); }
+.select { padding: 8px 12px; border-radius: var(--radius-md); background-color: rgba(255, 255, 255, 0.9); box-shadow: inset 0 2px 4px rgba(15, 23, 42, 0.05); border: 1px solid var(--border-default); font-size: 13px; color: var(--text-primary); font-family: var(--font-ui); }
 .submitBtn { padding: 8px 16px; border-radius: var(--radius-md); background: var(--gradient-primary); font-size: 13px; font-weight: 600; color: #1E293B; }
 .submitBtn:disabled { opacity: 0.4; cursor: not-allowed; }
 .cancelFormBtn { padding: 8px 16px; border-radius: var(--radius-md); border: 1px solid var(--border-default); font-size: 13px; color: var(--text-muted); }
