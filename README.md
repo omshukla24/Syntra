@@ -72,6 +72,97 @@ npm run deploy
 
 ## 🏗️ Project Architecture
 
+### System Architecture Diagram
+
+```mermaid
+graph TB
+    subgraph "🗣️ User Interface & Experience (Next.js 16)"
+      direction TB
+      subgraph "Layout & Global"
+        Layout["App Layout<br/>app/layout.tsx"] 
+        Sidebar["Navigation Sidebar<br/>components/Sidebar.tsx"]
+        Glow["Cursor Glow FX<br/>components/CursorGlow.tsx"]
+        Modal["API Key Modal<br/>components/ApiKeyModal.tsx"]
+        Layout --- Sidebar
+        Layout --- Glow
+        Layout --- Modal
+      end
+      
+      subgraph "Core Productivity Modules"
+        Dash["Dashboard<br/>app/page.tsx"]
+        Tasks["Task Manager<br/>app/tasks/page.tsx"]
+        Plan["Weekly Planner<br/>app/plan/page.tsx"]
+        Focus["Focus Timer<br/>app/focus/page.tsx"]
+        Progress["Analytics<br/>app/progress/page.tsx"]
+      end
+      
+      subgraph "AI Interaction Modules"
+        ReplanUI["Replan My Life<br/>app/replan/page.tsx"]
+        ChatUI["AI Chat<br/>app/chat/page.tsx"]
+        VoiceUI["Voice Assistant<br/>app/voice/page.tsx"]
+      end
+    end
+
+    subgraph "💾 Client-Side Data & Security Layer"
+      direction TB
+      StorageCore["Local Storage Wrapper<br/>lib/storage.ts"]
+      Types["Type Definitions<br/>lib/types.ts"]
+      BYOK["API Key Manager (BYOK)"]
+      Mock["Mock Data Fallback<br/>lib/mock-data.ts"]
+    end
+
+    subgraph "⚙️ API Layer (Next.js Route Handlers)"
+      direction TB
+      ApiReplan["Replan Endpoint<br/>api/replan/route.ts"]
+      ApiChat["Chat Endpoint<br/>api/chat/route.ts"]
+      ApiVoice["Voice Endpoint<br/>api/voice/route.ts"]
+      GeminiLib["Gemini Client Configuration<br/>lib/gemini.ts"]
+      
+      ApiReplan --> GeminiLib
+      ApiChat --> GeminiLib
+      ApiVoice --> GeminiLib
+    end
+
+    subgraph "☁️ External Cloud Services"
+      direction TB
+      GeminiAPI["Google Gemini 2.5 Flash API"]
+      GCP["Google Cloud App Engine<br/>Deployment Target"]
+    end
+
+    %% Relationships
+    Modal -->|Saves Key| BYOK
+    BYOK -->|Injects Key| StorageCore
+    StorageCore -->|Persists Data| Tasks
+    StorageCore -->|Persists Data| Plan
+    StorageCore -->|Reads Data| Progress
+    StorageCore -.->|Uses| Types
+
+    ReplanUI ==>|HTTP POST w/ Key| ApiReplan
+    ChatUI ==>|HTTP POST w/ Key| ApiChat
+    VoiceUI ==>|HTTP POST w/ Key| ApiVoice
+
+    GeminiLib ==>|SDK Calls| GeminiAPI
+    
+    ApiReplan -.->|Returns Actionable Plan| ReplanUI
+    ApiChat -.->|Returns Chat Response| ChatUI
+    ApiVoice -.->|Returns Transcribed Voice| VoiceUI
+    
+    ReplanUI -.->|Saves New Tasks| StorageCore
+
+    %% Styling
+    classDef ui fill:#1e293b,stroke:#475569,stroke-width:1px,color:#f8fafc
+    classDef data fill:#064e3b,stroke:#047857,stroke-width:1px,color:#ecfdf5
+    classDef api fill:#4c1d95,stroke:#6d28d9,stroke-width:1px,color:#f5f3ff
+    classDef ext fill:#7c2d12,stroke:#b45309,stroke-width:1px,color:#fff7ed
+    
+    class Layout,Sidebar,Glow,Modal,Dash,Tasks,Plan,Focus,Progress,ReplanUI,ChatUI,VoiceUI ui
+    class StorageCore,Types,BYOK,Mock data
+    class ApiReplan,ApiChat,ApiVoice,GeminiLib api
+    class GeminiAPI,GCP ext
+```
+
+### Directory Structure
+
 ```plaintext
 app/
 ├── api/              # Route handlers for AI, Chat, and Voice
